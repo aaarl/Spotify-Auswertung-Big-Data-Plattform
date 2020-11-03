@@ -18,8 +18,9 @@ Häufigste Krankheiten - WHO Daten
 | TODO | Lukas, Mark, Max, Sven | GitHub-Account erstellen |
 | TODO | Lukas, Mark, Max, Sven  | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
 | :white_check_mark: | Arl | README-Datei erstellen |
-| TODO | Lukas, Mark, Max, Sven  | Erste Gedanken zur Architektur |
+| TODO | Arl | Erste Gedanken zur Architektur |
 | :white_check_mark: | Arl | License file anlegen |
+| TODO | Arl | Grobe Aufgabenverteilung überlegen |
 
 ## Fragen: 
 - Dummy Daten aus einer fiktiven SQL-Datenbank?!
