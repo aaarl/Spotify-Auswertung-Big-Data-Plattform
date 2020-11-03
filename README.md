@@ -14,15 +14,17 @@ Häufigste Krankheiten - WHO Daten
 ## Aufgaben:
 | Status | Wer | Aufgabe |
 | :----: | :-: | :------ |
-| TODO | Alle | GitHub-Account organisieren erstellen |
-| TODO | Alle | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
+| :white_check_mark: | Arl | Git-Repo erstellen |
+| TODO | Lukas, Mark, Max, Sven | GitHub-Account erstellen |
+| TODO | Lukas, Mark, Max, Sven  | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
 | :white_check_mark: | Arl | README-Datei erstellen |
-| TODO | Arl | Erste Gedanken zur Architektur |
+| TODO | Lukas, Mark, Max, Sven  | Erste Gedanken zur Architektur |
+| :white_check_mark: | Arl | License file anlegen |
 
 ## Fragen: 
 - Dummy Daten aus einer fiktiven SQL-Datenbank?!
 - Soll Dashboard elastisch sein?
 
 ## Abgabedatum:
-Beratungstermin am 10.11.2020 um 17:00 Uhr
-finale Abgabe am 23.12.2020
+Beratungstermin: **10.11.2020 um 17:00 Uhr**
+Projektabgabe: **23.12.2020**
