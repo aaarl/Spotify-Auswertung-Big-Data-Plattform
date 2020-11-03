@@ -5,11 +5,11 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 #### Reminder: Dieses Feld muss vor Release des Projekts entfernt werden - Dient nur der Organisation und Abstimmung
 
 ## Use Cases
-Spotify - beliebte Lieder über Dashboard darstellen
-US-Wahl - Aufrufe von Trump und Biden je Bundesstaat
-Corona - Infektionszahlen
-Wildschweinabschüsse - Afrikanische Schweinepest
-Häufigste Krankheiten - WHO Daten
+- Spotify: beliebte Lieder über Dashboard darstellen
+- US-Wahl: Aufrufe von Trump und Biden je Bundesstaat
+- Corona: Infektionszahlen
+- Wildschweinabschüsse: Afrikanische Schweinepest
+- Häufigste Krankheiten: WHO Daten
 
 ## Aufgaben:
 | Status | Wer | Aufgabe |
