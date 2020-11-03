@@ -12,11 +12,12 @@ Wildschweinabschüsse - Afrikanische Schweinepest
 Häufigste Krankheiten - WHO Daten
 
 ## Aufgaben:
-| Wer? | Aufgabe |
-| ---- | ------- |
-| Alle | GitHub-Account organisieren erstellen |
-| Arl | Read Me erstellen und erste Gedanken zur Architektur |
-| Alle | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
+| Status | Wer? | Aufgabe |
+| :----: | :--: | :------ |
+| [ ] | Alle | GitHub-Account organisieren erstellen |
+| [ ] | Alle | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
+| [ ] | Arl | README-Datei erstellen |
+| [ ] | Arl | Erste Gedanken zur Architektur |
 
 ## Fragen: 
 - Dummy Daten aus einer fiktiven SQL-Datenbank?!
