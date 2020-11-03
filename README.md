@@ -5,7 +5,7 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 #### Reminder: Dieses Feld muss vor Release des Projekts entfernt werden - Dient nur der Organisation und Abstimmung
 
 ## Use Cases
-- Spotify: beliebte Lieder über Dashboard darstellen
+- **Spotify: beliebte Lieder über Dashboard darstellen**
 - US-Wahl: Aufrufe von Trump und Biden je Bundesstaat
 - Corona: Infektionszahlen
 - Wildschweinabschüsse: Afrikanische Schweinepest
@@ -15,7 +15,7 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 | Status | Wer | Aufgabe |
 | :----: | :-: | :------ |
 | :white_check_mark: | Arl | Git-Repo erstellen |
-| TODO | Lukas, Mark, Max, Sven | GitHub-Account erstellen |
+| TODO | Lukas, Mark, Max | GitHub-Account erstellen |
 | TODO | Lukas, Mark, Max, Sven  | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
 | :white_check_mark: | Arl | README-Datei erstellen |
 | TODO | Arl | Erste Gedanken zur Architektur |
