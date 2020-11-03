@@ -15,10 +15,10 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 | Status | Wer | Aufgabe |
 | :----: | :-: | :------ |
 | :white_check_mark: | Arl | Git-Repo erstellen |
-| TODO | Lukas, Mark, Max | GitHub-Account erstellen |
+| In progress | Lukas, Mark, Max | GitHub-Account erstellen |
 | TODO | Lukas, Mark, Max, Sven  | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
 | :white_check_mark: | Arl | README-Datei erstellen |
-| TODO | Arl | Erste Gedanken zur Architektur |
+| In progress | Arl | Erste Gedanken zur Architektur |
 | :white_check_mark: | Arl | License file anlegen |
 | TODO | Arl | Grobe Aufgabenverteilung überlegen |
 
@@ -27,5 +27,5 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 - Soll Dashboard elastisch sein?
 
 ## Abgabedatum:
-Beratungstermin: **10.11.2020 um 17:00 Uhr**
+Beratungstermin: **10.11.2020 um 17:00 Uhr** <br/>
 Projektabgabe: **23.12.2020**
