@@ -15,7 +15,7 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 | Status | Wer | Aufgabe |
 | :----: | :-: | :------ |
 | :white_check_mark: | Arl | Git-Repo erstellen |
-| WIP | Lukas, Mark, Max | GitHub-Account erstellen |
+| WIP | Mark, Max | GitHub-Account erstellen |
 | TODO | Alle  | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
 | :white_check_mark: | Arl | README-Datei erstellen |
 | WIP | Arl | Erste Gedanken zur Architektur |
