@@ -19,3 +19,6 @@ Hier kann man Links einbauen welche wir ggf. auswerten möchten:
 ### This file is an extension to the "data_by_artist.csv" file with genres implementation for each artist. Each row represents a single artist, each column represents an audio feature.
 
 - https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks?select=data_w_genres.csv
+
+
+test
