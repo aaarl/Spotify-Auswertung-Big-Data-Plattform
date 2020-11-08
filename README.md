@@ -2,6 +2,9 @@
 
 Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 
+# Links to use:
+https://rogerdudler.github.io/git-guide/index.de.html
+
 ## TODO
 
 #### Reminder: Dieses Feld muss vor Release des Projekts entfernt werden - Dient nur der Organisation und Abstimmung
