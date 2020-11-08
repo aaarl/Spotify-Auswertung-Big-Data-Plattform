@@ -2,6 +2,9 @@
 
 Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 
+# Links to use:
+https://rogerdudler.github.io/git-guide/index.de.html
+
 ## TODO
 
 #### Reminder: Dieses Feld muss vor Release des Projekts entfernt werden - Dient nur der Organisation und Abstimmung
@@ -18,12 +21,12 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 |       Status       |    Wer    | Aufgabe                                                                 |
 | :----------------: | :-------: | :---------------------------------------------------------------------- |
 | :white_check_mark: |    Arl    | Git-Repo erstellen                                                      |
-|        WIP         | Mark, Max | GitHub-Account erstellen                                                |
 |        TODO        |   Alle    | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
 | :white_check_mark: |    Arl    | README-Datei erstellen                                                  |
 | :white_check_mark: |    Arl    | Erste Gedanken zur Architektur                                          |
 | :white_check_mark: |    Arl    | License file anlegen                                                    |
 |        TODO        |    Arl    | Grobe Aufgabenverteilung überlegen                                      |
+test
 
 ## Fragen:
 
