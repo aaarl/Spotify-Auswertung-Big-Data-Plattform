@@ -34,8 +34,13 @@ URL: `:8080/genres/listed`
 - Result:
 
   - Shortcut | Most heard song 2020 | Band | Clicks on song | Name | Duration (in ms) | Acousticness | Danceability | Energy
-  - Pop | Holy | Justin Bieber | 167.539.630 | Pop music | 328 | 0.78 | 0.21 | 0.30
-  - ...
+  - Pop | Holy | Justin Bieber | 167.539.630 | Pop music | 328000 | 0.78 | 0.21 | 0.30
+  - Rock | Sweet Child O Mine | Guns N' Roses | 800.000.000 | Rock N' Roll | 580000 | ... | ... | ...
+  - Hip Hop
+  - Schlager
+  - usw.
+  
+  
 
 - Wie soll die Datenbank dann aussehen? Diskussion 08.11.2020:
   - Ergebnis:
