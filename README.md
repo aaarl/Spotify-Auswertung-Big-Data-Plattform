@@ -6,7 +6,7 @@ Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
 
 ## Use Cases
 - **Spotify: beliebte Lieder über Dashboard darstellen**
-- US-Wahl: Aufrufe von Trump und Biden je Bundesstaat
+- ~~US-Wahl: Aufrufe von Trump und Biden je Bundesstaat~~
 - Corona: Infektionszahlen
 - Wildschweinabschüsse: Afrikanische Schweinepest
 - Häufigste Krankheiten: WHO Daten
