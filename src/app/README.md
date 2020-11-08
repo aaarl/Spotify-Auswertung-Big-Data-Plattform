@@ -10,3 +10,10 @@ Untergeordnet befindet sich hier ebenfalls:
 - index.js
 - package.js
 - Shell-Commands
+
+# Reihenfolge .yaml-Dateien:
+
+- mysql.yml
+- service.yml
+- memcached.yml
+- deployment.yml

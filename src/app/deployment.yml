@@ -1,0 +1,59 @@
+# TODO: Is still popular-slides project, rename this ASAP
+
+#Begin: Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: popular-slides
+  labels:
+    app: popular-slides
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: popular-slides-web
+  template:
+    metadata:
+      labels:
+        app: popular-slides-web
+    spec:
+      containers:
+        - name: popular-slides-web
+          image: farberg/popular-slides
+          ports:
+            - containerPort: 3000
+
+---
+#Begin: Service
+kind: Service
+apiVersion: v1
+metadata:
+  name: popular-slides-service
+spec:
+  selector:
+    app: popular-slides-web
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+#End: Service
+
+---
+#Begin: Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: popular-slides-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: popular-slides-service
+                port:
+                  number: 3000
