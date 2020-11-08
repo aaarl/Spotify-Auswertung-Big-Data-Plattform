@@ -32,6 +32,10 @@ URL: `:8080/genre/invalid`
 URL: `:8080/genres/listed`
 
 - Result:
+
   - Shortcut | Most heard song 2020 | Band | Clicks on song | Name | Duration (in ms) | Acousticness | Danceability | Energy
   - Pop | Holy | Justin Bieber | 167.539.630 | Pop music | 328 | 0.78 | 0.21 | 0.30
   - ...
+
+- Wie soll die Datenbank dann aussehen? Diskussion 08.11.2020:
+  - Ergebnis:
