@@ -10,6 +10,17 @@ Aufbau der Datenbank:
 Daten vom Jahr 2020!
 URL: `:8080/genre/pop`
 
+## Übersicht
+- Date
+- Genre
+- Artist
+- Duration (ms)
+- Language
+- Release year
+
+
+- Date: Fri November 08 2020 19:34:50 GMT+0000 (blabla)
+- Memcached Server: 172. ...
 - Result: for Pop (cache miss)
   - Most heard song: Holy (feat. Chance the Rapper) - Justin Bieber
   - Amount of clicks: 167.539.630
