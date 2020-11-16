@@ -1,6 +1,6 @@
 # Spotify-Auswertung-Big-Data-Plattform
 
-Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze
+Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze.
 
 # Links to use:
 
