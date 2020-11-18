@@ -13,21 +13,27 @@ https://rogerdudler.github.io/git-guide/index.de.html
 ## Use Cases
 
 - **Spotify: beliebte Lieder über Dashboard darstellen**
-- Corona: Infektionszahlen
-- Wildschweinabschüsse: Afrikanische Schweinepest
-- Häufigste Krankheiten: WHO Daten
+- ~~US-Wahl mit Verteilung einzelner Regionen~~
+- ~~Corona: Infektionszahlen~~
+- ~~Wildschweinabschüsse: Afrikanische Schweinepest~~
+- ~~Häufigste Krankheiten: WHO Daten~~
 
 ## Aufgaben:
 
 |       Status       | Wer  | Aufgabe                                                                 |
 | :----------------: | :--: | :---------------------------------------------------------------------- |
 | :white_check_mark: | Arl  | Git-Repo erstellen                                                      |
-|        TODO        | Alle | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
+| :white_check_mark: | Alle | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
 | :white_check_mark: | Arl  | README-Datei erstellen                                                  |
 | :white_check_mark: | Arl  | Erste Gedanken zur Architektur                                          |
 | :white_check_mark: | Arl  | License file anlegen                                                    |
-|        TODO        | Arl  | Grobe Aufgabenverteilung überlegen                                      |
+| :white_check_mark: | Arl  | Grobe Aufgabenverteilung überlegen                                      |
 | :white_check_mark: | Arl  | Allen Git erklären und Umgebung einrichten                              |
+| | | |
+| :white_check_mark: | Max  | CSV-Datei erstellen                                                     |
+| TODO               | Arl  | MySQL-Workbench aufsetzen                                               |
+| TODO               | Arl  | Review CSV-Datei                                                        |
+| TODO               | Arl  | Erste Shell-Befehle zum Starten der Cluster, Container etc.             |
 
 ## Fragen:
 
@@ -41,7 +47,7 @@ Projektabgabe: **23.12.2020**
 
 ## Beschreibung des Projekts
 
-TODO
+TODO Alle
 
 ## Konzept
 
@@ -53,7 +59,7 @@ TODO AF
 
 ## Dokumentation
 
-TODO
+TODO AF
 
 ## Aufbau der Datenbank
 
