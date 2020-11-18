@@ -10,10 +10,12 @@ const app = express()
 const cacheTimeSecs = 15
 const numberOfMissions = 30
 
-// -------------------------------------------------------
-// Command-line options
-// -------------------------------------------------------
+// Main method
+app.listen(options.port, function () {
+	console.log("Node app is running at http://localhost:" + options.port)
+});
 
+// Command-line options
 let options = optionparser
 	.storeOptionsAsProperties(true)
 	// Web server
@@ -29,7 +31,7 @@ let options = optionparser
 	// Database options
 	.option('--mysql-host <host>', 'MySQL host', 'my-app-mysql-service')
 	.option('--mysql-port <port>', 'MySQL port', 33060)
-	.option('--mysql-schema <db>', 'MySQL Schema/database', 'popular')
+	.option('--mysql-schema <db>', 'MySQL Schema/database', 'spotifydb')
 	.option('--mysql-username <username>', 'MySQL username', 'root')
 	.option('--mysql-password <password>', 'MySQL password', 'mysecretpw')
 	// Misc
@@ -37,10 +39,8 @@ let options = optionparser
 	.parse()
 	.opts()
 
-// -------------------------------------------------------
-// Database Configuration
-// -------------------------------------------------------
 
+// Database Configuration
 const dbConfig = {
 	host: options.mysqlHost,
 	port: options.mysqlPort,
@@ -54,10 +54,7 @@ async function executeQuery(query, data) {
 	return await session.sql(query, data).bind(data).execute()
 }
 
-// -------------------------------------------------------
 // Memache Configuration
-// -------------------------------------------------------
-
 //Connect to the memcached instances
 let memcached = null
 let memcachedServers = []
@@ -100,10 +97,7 @@ async function getFromCache(key) {
 	return await memcached.get(key);
 }
 
-// -------------------------------------------------------
 // Kafka Configuration
-// -------------------------------------------------------
-
 // Kafka connection
 const kafka = new Kafka({
 	clientId: options.kafkaClientId,
@@ -131,10 +125,8 @@ async function sendTrackingMessage(data) {
 }
 // End
 
-// -------------------------------------------------------
-// HTML helper to send a response to the client
-// -------------------------------------------------------
 
+// HTML helper to send a response to the client
 function sendResponse(res, html, cachedResult) {
 	res.send(`<!DOCTYPE html>
 		<html lang="en">
@@ -175,10 +167,8 @@ function sendResponse(res, html, cachedResult) {
 	`)
 }
 
-// -------------------------------------------------------
+// TODO AF: change entire section (music listing instead of missions listing)
 // Start page
-// -------------------------------------------------------
-
 // Get list of missions (from cache or db)
 async function getMissions() {
 	const key = 'missions'
@@ -238,10 +228,7 @@ app.get("/", (req, res) => {
 	})
 })
 
-// -------------------------------------------------------
 // Get a specific mission (from cache or DB)
-// -------------------------------------------------------
-
 async function getMission(mission) {
 	const query = "SELECT mission, heading, description FROM missions WHERE mission = ?"
 	const key = 'mission_' + mission
@@ -285,12 +272,4 @@ app.get("/missions/:mission", (req, res) => {
 	}).catch(err => {
 		sendResponse(res, `<h1>Error</h1><p>${err}</p>`, false)
 	})
-});
-
-// -------------------------------------------------------
-// Main method
-// -------------------------------------------------------
-
-app.listen(options.port, function () {
-	console.log("Node app is running at http://localhost:" + options.port)
 });
