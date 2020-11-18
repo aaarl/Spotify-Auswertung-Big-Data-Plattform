@@ -23,7 +23,7 @@ sum.show()
 # todo af: rename db
 sum.write \
     .format("jdbc") \
-    .option("url", "jdbc:mysql://my-app-mysql-service:33060/sportsdb") \
+    .option("url", "jdbc:mysql://my-app-mysql-service:33060/spotifydb") \
     .option("dbtable", "totalTimesListened") \
     .option("user", "root") \
     .option("password", "mysecretpw") \
