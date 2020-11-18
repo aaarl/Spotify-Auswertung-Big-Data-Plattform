@@ -29,11 +29,12 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | :white_check_mark: | Arl  | License file anlegen                                                    |
 | :white_check_mark: | Arl  | Grobe Aufgabenverteilung überlegen                                      |
 | :white_check_mark: | Arl  | Allen Git erklären und Umgebung einrichten                              |
-| | | |
+|                    |      |                                                                         |
 | :white_check_mark: | Max  | CSV-Datei erstellen                                                     |
-| TODO               | Arl  | MySQL-Workbench aufsetzen                                               |
-| TODO               | Arl  | Review CSV-Datei                                                        |
-| TODO               | Arl  | Erste Shell-Befehle zum Starten der Cluster, Container etc.             |
+|        TODO        | Arl  | MySQL-Workbench aufsetzen                                               |
+| :white_check_mark: | Arl  | Review CSV-Datei                                                        |
+| :white_check_mark: | Arl  | Anpassung der CSV-Datei (Lesbarkeit und Konstanz)                       |
+| :white_check_mark: | Arl  | Erste Shell-Befehle zum Starten der Cluster, Container etc.             |
 
 ## Fragen:
 
