@@ -35,14 +35,46 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | :white_check_mark: | Arl        | Review CSV-Datei                                                        |
 | :white_check_mark: | Arl        | Anpassung der CSV-Datei (Lesbarkeit und Konstanz)                       |
 | :white_check_mark: | Arl        | Erste Shell-Befehle zum Starten der Cluster, Container etc.             |
-| TODO               | Arl        | Auflistung aller offenen Tasks/ Aufgaben anlegen                        |
+| :white_check_mark: | Arl        | Auflistung aller offenen Tasks/ Aufgaben anlegen                        |
 
 
 ## Offene Aufgaben:
 
-| Status | Bearbeiter | Aufgabe |
-| :----: | :--------: | :------ |
-| TODO   | TODO       | TODO    |
+| Aufgabe                      | Status | Bearbeiter |
+| :--------------------------: | :----: | :--------- |
+| **src > app > database**     |        |            |
+| spotify.mwb                  | TODO   | Arl        |
+| init-sample.sql              | TODO   | (Arl)      |
+| init.sql                     | TODO   | (Arl)      |
+| **src > hdfs**               |        |            |
+| deleteHDFS.sh                | TODO   | -          |
+| extractHDFS.sh               | TODO   | -          |
+| startHDFS.sh                 | TODO   | -          |
+| startLoad.sh                 | TODO   | -          |
+| **src | data**               |        |            |
+| Dockerfile                   | TODO   | Arl        |
+| deleteAllSparkpods.sh        | TODO   | -          |
+| kafkaSql.jar                 | TODO   | Arl        |
+| mysql.jar                    | TODO   | Arl        |
+| setup.md                     | TODO   | Arl        |
+| startSpark.sh                | TODO   | -          |
+| updateScript.sh              | TODO   | -          |
+| uploadData.sh                | TODO   | necessary? |
+| **src > data > batch**       |        |            |
+| submit.sh                    | TODO   | -          |
+| testingData.py               | TODO   | Arl        |
+| writeToDatabase.py           | DONE   | Arl        |
+| **src > data > kafka**       |        |            |
+| startKafka.sh                | TODO   | -          |
+| deleteKafka.sh               | TODO   | -          |
+| kafka-cluster-def.yml        | TODO   | - (1)      |
+| kafka-topic_web-requests.yml | TODO   | - (2)      |
+| **src > data > streaming**   |        |            |
+| kafkaStreaming.py            | TODO   | Arl        |
+| sparkStreaming.py            | TODO   | Arl        |
+| startStreaming.sh            | TODO   | -          |
+| submitKafka.sh               | TODO   | -          |
+| submitStreaming.sh           | TODO   | -          |
 
 ## Fragen:
 
