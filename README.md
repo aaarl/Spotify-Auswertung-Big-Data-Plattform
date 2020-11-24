@@ -18,23 +18,30 @@ https://rogerdudler.github.io/git-guide/index.de.html
 - ~~Wildschweinabschüsse: Afrikanische Schweinepest~~
 - ~~Häufigste Krankheiten: WHO Daten~~
 
-## Aufgaben:
+## TODO-Liste:
 
-|       Status       | Wer  | Aufgabe                                                                 |
-| :----------------: | :--: | :---------------------------------------------------------------------- |
-| :white_check_mark: | Arl  | Git-Repo erstellen                                                      |
-| :white_check_mark: | Alle | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
-| :white_check_mark: | Arl  | README-Datei erstellen                                                  |
-| :white_check_mark: | Arl  | Erste Gedanken zur Architektur                                          |
-| :white_check_mark: | Arl  | License file anlegen                                                    |
-| :white_check_mark: | Arl  | Grobe Aufgabenverteilung überlegen                                      |
-| :white_check_mark: | Arl  | Allen Git erklären und Umgebung einrichten                              |
-|                    |      |                                                                         |
-| :white_check_mark: | Max  | CSV-Datei erstellen                                                     |
-|        TODO        | Arl  | MySQL-Workbench aufsetzen                                               |
-| :white_check_mark: | Arl  | Review CSV-Datei                                                        |
-| :white_check_mark: | Arl  | Anpassung der CSV-Datei (Lesbarkeit und Konstanz)                       |
-| :white_check_mark: | Arl  | Erste Shell-Befehle zum Starten der Cluster, Container etc.             |
+|       Status       | Bearbeiter | Aufgabe                                                                 |
+| :----------------: | :--------: | :---------------------------------------------------------------------- |
+| :white_check_mark: | Arl        | Git-Repo erstellen                                                      |
+| :white_check_mark: | Alle       | Gedanken zum Result machen (z.B. Zähler: wie oft wurde das Lied gehört) |
+| :white_check_mark: | Arl        | README-Datei erstellen                                                  |
+| :white_check_mark: | Arl        | Erste Gedanken zur Architektur                                          |
+| :white_check_mark: | Arl        | License file anlegen                                                    |
+| :white_check_mark: | Arl        | Grobe Aufgabenverteilung überlegen                                      |
+| :white_check_mark: | Arl        | Allen Git erklären und Umgebung einrichten                              |
+|                    |            |                                                                         |
+| :white_check_mark: | Max        | CSV-Datei erstellen                                                     |
+| TODO               | Arl        | MySQL-Workbench aufsetzen                                               |
+| :white_check_mark: | Arl        | Review CSV-Datei                                                        |
+| :white_check_mark: | Arl        | Anpassung der CSV-Datei (Lesbarkeit und Konstanz)                       |
+| :white_check_mark: | Arl        | Erste Shell-Befehle zum Starten der Cluster, Container etc.             |
+| TODO               | Arl        | Auflistung aller offenen Tasks/ Aufgaben anlegen                        |
+
+
+## Offene Aufgaben:
+
+| Status | Bearbeiter | Aufgabe |
+| :----: | :--------: | todo    |
 
 ## Fragen:
 
