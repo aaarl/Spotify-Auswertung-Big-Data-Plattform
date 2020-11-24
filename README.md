@@ -41,7 +41,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 ## Offene Aufgaben:
 
 | Aufgabe                      | Status | Bearbeiter |
-| :--------------------------: | :----: | :--------- |
+| :--------------------------- | :----: | :--------: |
 | **src > app > database**     |        |            |
 | spotify.mwb                  | TODO   | Arl        |
 | init-sample.sql              | TODO   | (Arl)      |
