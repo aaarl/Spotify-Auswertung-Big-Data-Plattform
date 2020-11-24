@@ -41,7 +41,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 ## Offene Aufgaben:
 
 | Status | Bearbeiter | Aufgabe |
-| :----: | :--------: | TODO    |
+| :----: | :--------: | :------ |
 | TODO   | TODO       | TODO    |
 
 ## Fragen:
