@@ -56,7 +56,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | deleteAllSparkpods.sh        | TODO   | -          |
 | kafkaSql.jar                 | TODO   | Arl        |
 | mysql.jar                    | TODO   | Arl        |
-| setup.md                     | TODO   | Arl        |
+| setup.md                     | DONE   | Arl        |
 | startSpark.sh                | TODO   | -          |
 | updateScript.sh              | TODO   | -          |
 | uploadData.sh                | TODO   | necessary? |
