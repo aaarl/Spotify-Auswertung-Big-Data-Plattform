@@ -61,9 +61,9 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | updateScript.sh              | TODO   | -          |
 | uploadData.sh                | TODO   | necessary? |
 | **src > data > batch**       |        |            |
-| ~~submit.sh                  | DONE   | Arl~~      |
-| ~~testingData.py             | DONE   | Arl~~      |
-| ~~writeToDatabase.py         | DONE   | Arl~~      |
+| ~~submit.sh~~                | DONE   | Arl        |
+| ~~testingData.py~~           | DONE   | Arl        |
+| ~~writeToDatabase.py~~       | DONE   | Arl        |
 | **src > data > kafka**       |        |            |
 | startKafka.sh                | TODO   | -          |
 | deleteKafka.sh               | TODO   | -          |
