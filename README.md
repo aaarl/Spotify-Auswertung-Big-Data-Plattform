@@ -76,10 +76,18 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | ~~submitKafka.sh~~           | DONE   | Arl        |
 | ~~submitStreaming.sh~~       | DONE   | Arl        |
 
-### Notiz:
+### Notizen zu den offenen Aufgaben:
 
-- Check update case in startSpark.sh (check generally if we need updates for our dataset)
-- Add the entire list of artists in sparkStreaming.py
+Folgende Baustellen sind aktuell noch zu erledigen:
+
+- Skripte für HDFS (Starten, Laden, Löschen)
+- Skripte für Kafka (Starten und Löschen inkl. beider .yaml-Dateien)
+- Alle "artist" Namen in sparkStreaming.py eintragen (entsprechende Stelle ist im Code kommentiert)
+- Unterschiede zwischen dem Ordner "collection" und "test" ermitteln und auf "collection" reduzieren (test sollte nicht mehr hier sein)
+- **TODO Arl:** Überprüfen ob wir einen Update-Case haben bzw. benötigen (aktuelle Datensätze)
+  - entsprechende Skripte überprüfen
+- **TODO Arl:** Fertigstellen der MySQL-Workbench und der entsprechenden Skripte + .jar-Dateien
+  - startSpark.sh überprüfen bzgl. Updates
 
 ## Fragen:
 
