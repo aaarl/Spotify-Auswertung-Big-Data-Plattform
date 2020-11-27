@@ -10,8 +10,7 @@ import random
 def start_server_thread():
     class MySocketHandler(socketserver.BaseRequestHandler):
         def handle(self):
-            # List with all artists available in the CSV file
-            # TODO: Add all artists in here
+            # List with all artists available in dataset.csv/ compressed in artists.csv
             artists = ["Anuel AA", "Ariana Grande", "Ava Max", "Bad Bunny", "Beyoncé", "Billie Eilish", "Black Eyed Peas", "Bruno Mars", "Calvin Harris", "Camila Cabello", "Coldplay", "DaBaby", "Daddy Yankee", "David Guetta", "Diplo", "Doja Cat", "Drake", "Dua Lipa", "Ed Sheeran", "Eminem", "Halsey", "Harry Styles", "Imagine Dragons", "Imanbek", "J Balvin", "Jason Derulo", "Jawsh 685", "Juice WRLD", "Justin Bieber", "Kanye West", "Katy Perry", "Khalid", "Kygo", "Lady Gaga", "Lewis Capaldi", "Maroon 5", "Marshmello", "Nicki Minaj", "OneRepublic", "Ozuna", "Post Malone", "Queen", "Rihanna", "Saint Jhn", "Sam Smith", "Selena Gomez", "Shawn Mendes", "Sia", "Swae Lee", "Taylor Swift", "The Chainsmokers", "The Weeknd", "Tones and I", "Travis Scott", "Tyga"]
             # Endless loop to always create new random data
             while True:
