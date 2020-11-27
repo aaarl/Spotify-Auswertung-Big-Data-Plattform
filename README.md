@@ -53,7 +53,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | startLoad.sh                 | TODO   | -          |
 | **src > data**               |        |            |
 | ~~Dockerfile~~               | DONE   | Arl        |
-| deleteAllSparkpods.sh        | TODO   | -          |
+| ~~deleteAllSparkpods.sh~~    | DONE   | Arl        |
 | kafkaSql.jar                 | TODO   | Arl        |
 | mysql.jar                    | TODO   | Arl        |
 | ~~setup.md~~                 | DONE   | Arl        |
