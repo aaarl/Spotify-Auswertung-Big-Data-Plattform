@@ -57,9 +57,9 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | kafkaSql.jar                 | TODO   | Arl        |
 | mysql.jar                    | TODO   | Arl        |
 | ~~setup.md~~                 | DONE   | Arl        |
-| startSpark.sh                | TODO   | -          |
+| ~~startSpark.sh~~~           | CHECK  | Arl        |
 | updateScript.sh              | TODO   | -          |
-| uploadData.sh                | TODO   | necessary? |
+| uploadData.sh                | CHECK  | necessary? |
 | **src > data > batch**       |        |            |
 | ~~submit.sh~~                | DONE   | Arl        |
 | ~~testingData.py~~           | DONE   | Arl        |
@@ -75,6 +75,9 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | startStreaming.sh            | TODO   | -          |
 | submitKafka.sh               | TODO   | -          |
 | submitStreaming.sh           | TODO   | -          |
+
+### Notiz:
+Check update case in startSpark.sh
 
 ## Fragen:
 
