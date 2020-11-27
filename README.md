@@ -70,14 +70,15 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | kafka-cluster-def.yml        | TODO   | - (1)      |
 | kafka-topic_web-requests.yml | TODO   | - (2)      |
 | **src > data > streaming**   |        |            |
-| kafkaStreaming.py            | TODO   | Arl        |
-| sparkStreaming.py            | TODO   | Arl        |
-| startStreaming.sh            | TODO   | -          |
-| submitKafka.sh               | TODO   | -          |
-| submitStreaming.sh           | TODO   | -          |
+| ~~kafkaStreaming.py~~        | TODO   | Arl        |
+| ~~sparkStreaming.py~~        | CHECK  | Arl        |
+| ~~startStreaming.sh~~        | TODO   | Arl        |
+| ~~submitKafka.sh~~           | TODO   | Arl        |
+| ~~submitStreaming.sh~~       | TODO   | Arl        |
 
 ### Notiz:
 Check update case in startSpark.sh
+Add the entire list of artists in sparkStreaming.py
 
 ## Fragen:
 
