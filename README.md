@@ -44,26 +44,26 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | :--------------------------- | :----: | :--------: |
 | **src > app > database**     |        |            |
 | spotify.mwb                  | TODO   | Arl        |
-| init-sample.sql              | TODO   | (Arl)      |
-| init.sql                     | TODO   | (Arl)      |
+| init-sample.sql              | TODO   | Arl        |
+| init.sql                     | TODO   | Arl        |
 | **src > hdfs**               |        |            |
 | deleteHDFS.sh                | TODO   | -          |
 | extractHDFS.sh               | TODO   | -          |
 | startHDFS.sh                 | TODO   | -          |
 | startLoad.sh                 | TODO   | -          |
 | **src > data**               |        |            |
-| Dockerfile                   | DONE   | Arl        |
+| ~~Dockerfile                 | DONE   | Arl~~      |
 | deleteAllSparkpods.sh        | TODO   | -          |
 | kafkaSql.jar                 | TODO   | Arl        |
 | mysql.jar                    | TODO   | Arl        |
-| setup.md                     | DONE   | Arl        |
+| ~~setup.md                   | DONE   | Arl~~      |
 | startSpark.sh                | TODO   | -          |
 | updateScript.sh              | TODO   | -          |
 | uploadData.sh                | TODO   | necessary? |
 | **src > data > batch**       |        |            |
-| submit.sh                    | TODO   | -          |
-| testingData.py               | TODO   | Arl        |
-| writeToDatabase.py           | DONE   | Arl        |
+| ~~submit.sh                  | DONE   | Arl~~      |
+| ~~testingData.py             | DONE   | Arl~~      |
+| ~~writeToDatabase.py         | DONE   | Arl~~      |
 | **src > data > kafka**       |        |            |
 | startKafka.sh                | TODO   | -          |
 | deleteKafka.sh               | TODO   | -          |
