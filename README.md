@@ -57,7 +57,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | kafkaSql.jar                 | TODO   | Arl        |
 | mysql.jar                    | TODO   | Arl        |
 | ~~setup.md~~                 | DONE   | Arl        |
-| ~~startSpark.sh~~~           | CHECK  | Arl        |
+| ~~startSpark.sh~~            | CHECK  | Arl        |
 | updateScript.sh              | TODO   | -          |
 | uploadData.sh                | CHECK  | necessary? |
 | **src > data > batch**       |        |            |
