@@ -77,8 +77,9 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | ~~submitStreaming.sh~~       | DONE   | Arl        |
 
 ### Notiz:
-Check update case in startSpark.sh
-Add the entire list of artists in sparkStreaming.py
+
+- Check update case in startSpark.sh (check generally if we need updates for our dataset)
+- Add the entire list of artists in sparkStreaming.py
 
 ## Fragen:
 
