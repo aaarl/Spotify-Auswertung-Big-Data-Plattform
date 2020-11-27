@@ -52,7 +52,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | startHDFS.sh                 | TODO   | -          |
 | startLoad.sh                 | TODO   | -          |
 | **src > data**               |        |            |
-| Dockerfile                   | TODO   | Arl        |
+| Dockerfile                   | DONE   | Arl        |
 | deleteAllSparkpods.sh        | TODO   | -          |
 | kafkaSql.jar                 | TODO   | Arl        |
 | mysql.jar                    | TODO   | Arl        |
