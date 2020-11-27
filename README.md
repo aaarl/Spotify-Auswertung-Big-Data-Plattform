@@ -58,7 +58,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | mysql.jar                    | TODO   | Arl        |
 | ~~setup.md~~                 | DONE   | Arl        |
 | ~~startSpark.sh~~            | CHECK  | Arl        |
-| updateScript.sh              | TODO   | -          |
+| updateScript.sh              | CHECK  | necessary? |
 | uploadData.sh                | CHECK  | necessary? |
 | **src > data > batch**       |        |            |
 | ~~submit.sh~~                | DONE   | Arl        |
