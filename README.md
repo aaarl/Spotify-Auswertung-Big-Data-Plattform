@@ -49,8 +49,8 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | **src > hdfs**               |        |            |
 | deleteHDFS.sh                | TODO   | -          |
 | extractHDFS.sh               | TODO   | -          |
-| startHDFS.sh                 | TODO   | -          |
-| startLoad.sh                 | TODO   | -          |
+| ~~startHDFS.sh~~             | DONE   | Arl        |
+| startLoad.sh                 | TODO   | Arl        |
 | **src > data**               |        |            |
 | ~~Dockerfile~~               | DONE   | Arl        |
 | ~~deleteAllSparkpods.sh~~    | DONE   | Arl        |
@@ -71,7 +71,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | kafka-topic_web-requests.yml | TODO   | - (2)      |
 | **src > data > streaming**   |        |            |
 | ~~kafkaStreaming.py~~        | DONE   | Arl        |
-| ~~sparkStreaming.py~~        | CHECK  | Arl        |
+| ~~sparkStreaming.py~~        | DONE   | Arl        |
 | ~~startStreaming.sh~~        | DONE   | Arl        |
 | ~~submitKafka.sh~~           | DONE   | Arl        |
 | ~~submitStreaming.sh~~       | DONE   | Arl        |
@@ -80,10 +80,10 @@ https://rogerdudler.github.io/git-guide/index.de.html
 
 Folgende Baustellen sind aktuell noch zu erledigen:
 
-- Skripte für HDFS (Starten, Laden, Löschen)
+- Skripte für HDFS (~~Starten~~, Laden (Arl), Löschen)
 - Skripte für Kafka (Starten und Löschen inkl. beider .yaml-Dateien)
-- Alle "artist" Namen in sparkStreaming.py eintragen (entsprechende Stelle ist im Code kommentiert)
-- Unterschiede zwischen dem Ordner "collection" und "test" ermitteln und auf "collection" reduzieren (test sollte nicht mehr hier sein)
+- ~~TODO Sven: Alle "artist" Namen in sparkStreaming.py eintragen (entsprechende Stelle ist im Code kommentiert)~~
+- ~~TODO Sven: Unterschiede zwischen dem Ordner "collection" und "test" ermitteln und auf "collection" reduzieren (test sollte nicht mehr hier sein)~~
 - **TODO Arl:** Überprüfen ob wir einen Update-Case haben bzw. benötigen (aktuelle Datensätze)
   - entsprechende Skripte überprüfen
 - **TODO Arl:** Fertigstellen der MySQL-Workbench und der entsprechenden Skripte + .jar-Dateien
