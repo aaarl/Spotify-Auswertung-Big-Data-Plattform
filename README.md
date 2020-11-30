@@ -47,8 +47,8 @@ https://rogerdudler.github.io/git-guide/index.de.html
 | init-sample.sql              | TODO   | Arl        |
 | init.sql                     | TODO   | Arl        |
 | **src > hdfs**               |        |            |
-| deleteHDFS.sh                | TODO   | -          |
-| extractHDFS.sh               | TODO   | -          |
+| ~~deleteHDFS.sh~~            | DONE   | Arl        |
+| ~~extractHDFS.sh~~           | DONE   | Arl        |
 | ~~startHDFS.sh~~             | DONE   | Arl        |
 | startLoad.sh                 | TODO   | Arl        |
 | **src > data**               |        |            |
