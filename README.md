@@ -101,7 +101,25 @@ Projektabgabe: **23.12.2020**
 
 ## Beschreibung des Projekts
 
-TODO Alle
+##Einleitung##
+In der Vorlesung “Data Science & Big Data” besteht die Prüfungsleistung aus zwei verschiedenen Laborberichten. Das Ziel der Gruppenaufgabe im Laborbericht 1 ist es, einen Applikation für einen Anwendungsfall zu entwickeln. Dieser soll  in der Vorlesung kennen gelernten Ziel-Architektur realisiert werden. 
+
+Zu Beginn des Projekts wurde das Projektteam definiert und sich auf eine Projektdokumentation geeinigt. Als Versionsverwaltung des Software-Entwicklungsprojekts wurde sich auf GitHub festgelegt. Das tracken der Aufgaben innerhalb des Projekts erfolgte in der README-Datei des Repositorys. Die gruppeninterne Kommunikation erfolgt in einer WhatsApp-Gruppe.
+
+##Identifikation des Use Cases##
+In einem per Videoschalte durchgeführten Workshop wurde der für eine Anwendungsfall für die Big Data Applikation erarbeitet. Als erstes wurden in einem Brainstorming fünf verschiedene Use Cases genannt. Diese wurden anschließend von den Projektmitgliedern ausformuliert.
+
+
+| Nummer | Thema
+|1 |Spotify Dashboard - Ausgabe von Hitlisten|
+|2 |US-Wahl: Abstimmungsergebnisse in einzelnen Regionen darstellen|
+|3 |Corona: Infektionszahlen in verschiedenen Landkreisen|
+|4 |Afrikanische Schweinepest: Wildschweinabschüsse mit positiver Inzidenz|
+|5 |Weltweit häufigste Krankheiten in einer Liste darstellen|
+
+
+Nach einer sorgfältigen Erwägung des Fürs und Widers der jeweiligen Use Cases, wurde sich auf die Anwendung “Spotify Dashboard - Ausgabe von Hitlisten” festgelegt. Als vorteilhaft für diese Anwendung zeigten sich eine bereits große Menge an verfügbaren Daten, ein klares Zielbild der Applikation, sowie eine positive Assoziation mit dem Thema Musik.
+
 
 ## Konzept
 
