@@ -40,41 +40,41 @@ https://rogerdudler.github.io/git-guide/index.de.html
 
 ## Offene Aufgaben:
 
-| Aufgabe                      | Status | Bearbeiter |
-| :--------------------------- | :----: | :--------: |
-| **src > app > database**     |        |            |
-| spotify.mwb                  | TODO   | Arl        |
-| init-sample.sql              | TODO   | Arl        |
-| init.sql                     | TODO   | Arl        |
-| **src > hdfs**               |        |            |
-| ~~deleteHDFS.sh~~            | DONE   | Arl        |
-| ~~extractHDFS.sh~~           | DONE   | Arl        |
-| ~~startHDFS.sh~~             | DONE   | Arl        |
-| startLoad.sh                 | TODO   | Arl        |
-| **src > data**               |        |            |
-| ~~Dockerfile~~               | DONE   | Arl        |
-| ~~deleteAllSparkpods.sh~~    | DONE   | Arl        |
-| kafkaSql.jar                 | TODO   | Arl        |
-| mysql.jar                    | TODO   | Arl        |
-| ~~setup.md~~                 | DONE   | Arl        |
-| ~~startSpark.sh~~            | CHECK  | Arl        |
-| updateScript.sh              | CHECK  | necessary? |
-| uploadData.sh                | CHECK  | necessary? |
-| **src > data > batch**       |        |            |
-| ~~submit.sh~~                | DONE   | Arl        |
-| ~~testingData.py~~           | DONE   | Arl        |
-| ~~writeToDatabase.py~~       | DONE   | Arl        |
-| **src > data > kafka**       |        |            |
-| startKafka.sh                | TODO   | -          |
-| deleteKafka.sh               | TODO   | -          |
-| kafka-cluster-def.yml        | TODO   | - (1)      |
-| kafka-topic_web-requests.yml | TODO   | - (2)      |
-| **src > data > streaming**   |        |            |
-| ~~kafkaStreaming.py~~        | DONE   | Arl        |
-| ~~sparkStreaming.py~~        | DONE   | Arl        |
-| ~~startStreaming.sh~~        | DONE   | Arl        |
-| ~~submitKafka.sh~~           | DONE   | Arl        |
-| ~~submitStreaming.sh~~       | DONE   | Arl        |
+| Aufgabe                          | Status | Bearbeiter |
+| :------------------------------- | :----: | :--------: |
+| **src > app > database**         |        |            |
+| spotify.mwb                      | TODO   | Arl        |
+| init-sample.sql                  | TODO   | Arl        |
+| init.sql                         | TODO   | Arl        |
+| **src > hdfs**                   |        |            |
+| ~~deleteHDFS.sh~~                | DONE   | Arl        |
+| ~~extractHDFS.sh~~               | DONE   | Arl        |
+| ~~startHDFS.sh~~                 | DONE   | Arl        |
+| startLoad.sh                     | TODO   | Arl        |
+| **src > data**                   |        |            |
+| ~~Dockerfile~~                   | DONE   | Arl        |
+| ~~deleteAllSparkpods.sh~~        | DONE   | Arl        |
+| kafkaSql.jar                     | TODO   | Arl        |
+| mysql.jar                        | TODO   | Arl        |
+| ~~setup.md~~                     | DONE   | Arl        |
+| ~~startSpark.sh~~                | CHECK  | Arl        |
+| updateScript.sh                  | CHECK  | necessary? |
+| uploadData.sh                    | CHECK  | necessary? |
+| **src > data > batch**           |        |            |
+| ~~submit.sh~~                    | DONE   | Arl        |
+| ~~testingData.py~~               | DONE   | Arl        |
+| ~~writeToDatabase.py~~           | DONE   | Arl        |
+| **src > data > kafka**           |        |            |
+| ~~startKafka.sh~~                | DONE   | Arl        |
+| ~~deleteKafka.sh~~               | DONE   | Arl        |
+| ~~kafka-cluster-def.yml~~        | DONE   | Arl        |
+| ~~kafka-topic_web-requests.yml~~ | DONE   | Arl        |
+| **src > data > streaming**       |        |            |
+| ~~kafkaStreaming.py~~            | DONE   | Arl        |
+| ~~sparkStreaming.py~~            | DONE   | Arl        |
+| ~~startStreaming.sh~~            | DONE   | Arl        |
+| ~~submitKafka.sh~~               | DONE   | Arl        |
+| ~~submitStreaming.sh~~           | DONE   | Arl        |
 
 ### Notizen zu den offenen Aufgaben:
 
