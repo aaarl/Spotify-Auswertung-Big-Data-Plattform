@@ -81,7 +81,7 @@ https://rogerdudler.github.io/git-guide/index.de.html
 Folgende Baustellen sind aktuell noch zu erledigen:
 
 - Skripte für HDFS (~~Starten~~, Laden (Arl), Löschen)
-- Skripte für Kafka (Starten und Löschen inkl. beider .yaml-Dateien)
+- ~~TODO AF: Skripte für Kafka (Starten und Löschen inkl. beider .yaml-Dateien)~~
 - ~~TODO Sven: Alle "artist" Namen in sparkStreaming.py eintragen (entsprechende Stelle ist im Code kommentiert)~~
 - ~~TODO Sven: Unterschiede zwischen dem Ordner "collection" und "test" ermitteln und auf "collection" reduzieren (test sollte nicht mehr hier sein)~~
 - **TODO Arl:** Überprüfen ob wir einen Update-Case haben bzw. benötigen (aktuelle Datensätze)
