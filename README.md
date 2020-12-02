@@ -101,12 +101,12 @@ Projektabgabe: **23.12.2020**
 
 ## Beschreibung des Projekts
 
-##Einleitung##
+##Einleitung
 In der Vorlesung “Data Science & Big Data” besteht die Prüfungsleistung aus zwei verschiedenen Laborberichten. Das Ziel der Gruppenaufgabe im Laborbericht 1 ist es, einen Applikation für einen Anwendungsfall zu entwickeln. Dieser soll  in der Vorlesung kennen gelernten Ziel-Architektur realisiert werden. 
 
 Zu Beginn des Projekts wurde das Projektteam definiert und sich auf eine Projektdokumentation geeinigt. Als Versionsverwaltung des Software-Entwicklungsprojekts wurde sich auf GitHub festgelegt. Das tracken der Aufgaben innerhalb des Projekts erfolgte in der README-Datei des Repositorys. Die gruppeninterne Kommunikation erfolgt in einer WhatsApp-Gruppe.
 
-##Identifikation des Use Cases##
+##Identifikation des Use Cases
 In einem per Videoschalte durchgeführten Workshop wurde der für eine Anwendungsfall für die Big Data Applikation erarbeitet. Als erstes wurden in einem Brainstorming fünf verschiedene Use Cases genannt. Diese wurden anschließend von den Projektmitgliedern ausformuliert.
 
 | Nummer                           | Thema |
