@@ -109,8 +109,8 @@ Zu Beginn des Projekts wurde das Projektteam definiert und sich auf eine Projekt
 ##Identifikation des Use Cases##
 In einem per Videoschalte durchgeführten Workshop wurde der für eine Anwendungsfall für die Big Data Applikation erarbeitet. Als erstes wurden in einem Brainstorming fünf verschiedene Use Cases genannt. Diese wurden anschließend von den Projektmitgliedern ausformuliert.
 
-
-| Nummer | Thema
+| Nummer                           | Thema |
+| :----: | :-------------------------------| 
 |1 |Spotify Dashboard - Ausgabe von Hitlisten|
 |2 |US-Wahl: Abstimmungsergebnisse in einzelnen Regionen darstellen|
 |3 |Corona: Infektionszahlen in verschiedenen Landkreisen|
