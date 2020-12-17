@@ -9,14 +9,16 @@ https://rogerdudler.github.io/git-guide/index.de.html
 ## Offene Aufgaben:
 
 | Aufgabe                          | Status | Bearbeiter |
-| :-------------- | :--: | :-: |
-| init-sample.sql | TODO | Arl |
-| init.sql        | TODO | Arl |
-| startLoad.sql   | TODO | Arl |
-| kafkaSql.jar    | TODO | Arl |
-| mysql.jar       | TODO | Arl |
-| updateScript.sh | TODO | Arl |
-| uploadData.sh   | TODO | Arl |
+| :------------------ | :--: | :-: |
+| init-sample.sql     | DONE | Arl |
+| init.sql            | DONE | Arl |
+| startLoad.sql       | DONE | Arl |
+| kafkaSql.jar        | DONE | Arl |
+| mysql.jar           | DONE | Arl |
+| updateScript.sh     | TODO | Arl |
+| uploadData.sh       | DONE | Arl |
+| index.js            | TODO | Arl |
+| uploadToDatabase.py | TODO | Arl |
 
 ## Abgabedatum:
 
