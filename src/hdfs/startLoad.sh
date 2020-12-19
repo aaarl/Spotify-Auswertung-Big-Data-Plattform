@@ -3,7 +3,7 @@
 echo "Start loading Data in HDFS"
 
 echo "Create input folder and load data"
-kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -mkdir -p input && hdfs dfs -chmod -R 777 input && curl https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/ | hdfs dfs -put - input/spotifydata"
+kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -mkdir -p input && hdfs dfs -chmod -R 777 input | hdfs dfs -put - input/spotifydata"
 
 echo "List folder 'input'"
 kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -ls input"
@@ -25,3 +25,4 @@ echo "> PW: admin-password"
 echo "3) Access Data Lake via WebHDFS REST API"
 echo "> List a driectory: curl -v -u admin:admin-password 'http://KNOX_IP:8080/webhdfs/v1/user/root/input/?op=LISTSTATUS'"
 echo "> Read and open file: curl -v -u admin:admin-password -i -L 'http://KNOX_IP:8080/webhdfs/v1/user/root/input/spotifydata?op=OPEN'"
+
