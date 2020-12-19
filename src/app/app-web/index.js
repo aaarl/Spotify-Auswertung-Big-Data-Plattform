@@ -82,7 +82,7 @@ async function getFromDatabase(query) {
 
 // Get the total cases for a specific artists from the db
 async function getArtistsFromDatabase(type) {
-	let query = `SELECT * from spotify_artists ORDER BY total_${type} DESC LIMIT 10`;
+	let query = `SELECT * from spotify_cases ORDER BY total_${type} DESC LIMIT 10`;
 	return getFromDatabase(query);
 }
 
@@ -93,11 +93,11 @@ async function getArtistNameFromDatabase(alpha2) {
 }
 
 // Get the total cases for a specific artists from the db
-async function getTotalArtistsArtistFromDatabase(alpha2) {
-	let query = 'SELECT total_cases from spotify_artists WHERE alpha2 = "' + alpha2 + '" LIMIT 1';
+async function getTotalArtistsFromDatabase(alpha2) {
+	let query = 'SELECT total_cases from spotify_cases WHERE alpha2 = "' + alpha2 + '" LIMIT 1';
 	const batchResult = await getFromDatabaseFirst(query);
 
-	let streamingQuery = 'SELECT sum(count) from live_corona WHERE artists = "' + alpha2.toUpperCase() + '" LIMIT 1';
+	let streamingQuery = 'SELECT sum(count) from live_spotify WHERE artists = "' + alpha2.toUpperCase() + '" LIMIT 1';
 	const streamingResult = await getFromDatabaseFirst(streamingQuery);
 
 	if (batchResult && streamingResult) {
@@ -109,15 +109,9 @@ async function getTotalArtistsArtistFromDatabase(alpha2) {
 	}
 }
 
-// Get the total deaths for a specific artists from the db
-async function getTotalDeathsArtistFromDatabase(alpha2) {
-	let query = 'SELECT total_deaths from spotify_artists WHERE alpha2 = "' + alpha2 + '" LIMIT 1';
-	return getFromDatabaseFirst(query);
-}
-
 // Return all artists where corona cases occurred
-async function getAllCountries() {
-	const query = 'SELECT * FROM spotify_artists';
+async function getAllArtists() {
+	const query = 'SELECT * FROM spotify_cases';
 	return getFromDatabase(query);
 }
 
@@ -216,10 +210,14 @@ app.get('/', function (request, response) {
 	response.send(`Welcome to the Spotify Big Data Plattform by
 			<ul>
 				<li>Arl Ferhati</li>
+				<li>Sven Fischer</li>
+				<li>Lucas Zodel</li>
+				<li>Maximilian Höger</li>
+				<li>Mark Bühler</li>
 			</ul>
 			The following URL commands are supported:
 			<ul>
-				<li>artists/[id] - id as ISO 3166-1 Alpha-2-code</li>
+				<li>artists/[id] - id as Artist name</li>
 				<li>artists/[type] - Listing of the top ten most popular artists, the ranking is sorted by the type which could be song times listened or most popular song</li>
                 <li>webrequests - Returns all received requests grouped by the URL</li>
 			</ul>`);
@@ -230,16 +228,16 @@ app.getAsync('/artists', async function (request, response) {
 
 	sendToKafka(request.url);
 
-	const data = await getAllCountries();
+	const data = await getAllArtists();
 	console.log(data);
 	let result = `<table>
 	<tr>
 	  <th>Artist</th>
-	  <th>Total Cases</th>
-	  <th>Total Deaths</th>
-	  <th>Total Tests</th>
-	  <th>GDP per capita</th>
-	  <th>Population(2018)</th>
+	  <th>Times Listened</th>
+	  <th>Test</th>
+	  <th>Test</th>
+	  <th>Test</th>
+	  <th>Test</th>
 	</tr>`;
 	for (const row of data) {
 		result += `<tr>
@@ -263,9 +261,7 @@ app.getAsync('/artists/:id', async function (request, response) {
 
 	sendToKafka(request.url);
 
-	let deaths = await getData(artistsKey + '_deaths', artistsId, getTotalDeathsArtistFromDatabase);
-	console.log(`Got deaths=${deaths}`)
-	let cases = await getData(artistsKey + '_cases', artistsId, getTotalArtistsArtistFromDatabase);
+	let cases = await getData(artistsKey + '_cases', artistsId, getTotalArtistsFromDatabase);
 	console.log(`Got cases=${artistsKey}`)
 
 	let name = await getArtistName(artistsId);
@@ -287,7 +283,7 @@ app.getAsync('/artists/:type', async function (request, response) {
 	let queryResult = await getArtistsFromDatabase(type) // 0 = alpha2, 1 = cases, 2 = deaths
 	let queryResultLength = queryResult.length;
 
-	var ret = '<br>Alpha3 | Total Cases | Total Deaths | Population 2018 | Alpha2 | Name | Continent | Total Tests | GDP per Capita<br>';
+	var ret = '<br>Alpha3 | Total Cases | Test | Test | Test | Test | Test | Test | Test<br>';
 
 	for (var i = 0; i < queryResultLength; ++i) {
 		console.log(i + " : " + queryResult[i]);
