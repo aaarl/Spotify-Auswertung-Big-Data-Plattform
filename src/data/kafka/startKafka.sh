@@ -2,7 +2,7 @@
 
 # Add strimzi operator
 echo "Add strimzi repo"
-helm repo add strimzi http://strimzi.io/charts/
+helm repo add strimzi https://strimzi.io/charts/
 
 # Installieren des kafka operators
 echo "Install Kafka operator"
