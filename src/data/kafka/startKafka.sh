@@ -14,9 +14,9 @@ sleep 15
 
 # Deployen des clusters durch den operator
 echo "Deploy cluster"
-kubectl apply -f kafka-cluster-def.yml
+kubectl apply -f 01-kafka-cluster-def.yml
 
 echo "Deploy topic web-requests"
-kubectl apply -f kafka-topic-web-requests.yml
+kubectl apply -f 02-kafka-topic-web-requests.yml
 
 # watch kubectl get all
