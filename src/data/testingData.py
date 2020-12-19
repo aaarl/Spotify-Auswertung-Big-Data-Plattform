@@ -19,7 +19,8 @@ spark = SparkContext("local[*]", "SQL_Example")
 sc = SQLContext(spark)
 
 # The following creates a DataFrame based on the content of a JSON file
-df = sc.read.load(inputFile, format="csv", sep=",", inferSchema="true", header="true")
+df = sc.read.load(inputFile, format="csv", sep=",",
+                  inferSchema="true", header="true")
 #df = sc.read.load("../../rsrc/dataset.csv", format="csv", sep=",", inferSchema="true", header="true")
 
 # Test Display of dateRep column
@@ -30,12 +31,11 @@ df.select("date").show()
 # Print the schema in a tree format
 df.printSchema()
 
-sum = df.groupBy('iso_code').agg(
-    F.max('total_tests').alias('total_tests'), 
-    F.max('gdp_per_capita').alias('gdp_per_capita')
-    ) \
+sum = df.groupBy('name').agg(
+    F.max('total_timesListened').alias('total_tests'),
+) \
     .orderBy('total_tests', ascending=False) \
-    
+
 sum.show()
 
 sum.coalesce(1).write.csv(path=output, mode="overwrite")

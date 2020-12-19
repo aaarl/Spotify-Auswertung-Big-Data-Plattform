@@ -17,11 +17,11 @@ df = sc.read.load(inputFile, format="csv", sep=",",
 # Aggregate the Artists and Release date from the artists, join other information by using the max aggregation function
 sum = df.groupBy('countryterritoryCode').agg(
     F.sum('artists').alias('total_artists'),
-    F.sum('deaths').alias('total_deaths'),
-    F.max('popData2018').alias('popData2018'),
-    F.max('geoId').alias('alpha2'),
-    F.max('countriesAndTerritories').alias('name'),
-    F.max('continentExp').alias('continent')
+    F.sum('month').alias('total_cases'),
+    F.max('timesListened').alias('timesListened'),
+    F.max('year').alias('alpha2'),
+    F.max('mostStreamedSong').alias('name'),
+    F.max('genre').alias('genre')
 ) \
     .orderBy('total_artists', ascending=False) \
 
