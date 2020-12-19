@@ -10,13 +10,13 @@ eval $(minikube docker-env)
 
 # Bauen des Applikationsimages aus dem Dockerfile
 echo "Build the application image of the docker file"
-cd web
+cd app-web
 docker build -t my-super-web-app .
 cd ..
 
 # Bauen des Databaseimages aus dem Dockerfile
 echo "Build the database image of the docker file"
-cd db
+cd database
 docker build -t my-super-mysql-database .
 cd ..
 
