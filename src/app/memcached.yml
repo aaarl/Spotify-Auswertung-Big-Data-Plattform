@@ -1,4 +1,3 @@
-#Begin: Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,7 +6,7 @@ metadata:
     app: memcache-deployment
 spec:
   # Three memcached instances
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: my-memcached
@@ -21,10 +20,15 @@ spec:
           image: memcached:alpine
           ports:
             - containerPort: 11211
-#End: Deployment
+#          resources:
+#            requests:
+#              cpu: 1
+#              memory: "100M"
+#            limits:
+#              cpu: 2
+#              memory: "200M"
 
 ---
-#Begin: Service
 kind: Service
 apiVersion: v1
 metadata:
@@ -34,4 +38,3 @@ spec:
   clusterIP: None
   selector:
     app: my-memcached
-#End: Service

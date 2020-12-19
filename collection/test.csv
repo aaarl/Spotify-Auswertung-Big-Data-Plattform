@@ -1,4 +1,4 @@
-dateRep,day,month,year,cases,deaths,countriesAndTerritories,geoId,countryterritoryCode,popData2019,continentExp,Cumulative_number_for_14_days_of_COVID-19_cases_per_100000
+dateRep,day,month,year,cases,deaths,countriesAndTerritories,geoId,countryterritoryCode,popData2019,continentExp,cumulative_per_100000
 
-04/11/2020,4,11,2020,86,4,Afghanistan,AF,AFG,38041757,Asia,3.78268543
-03/11/2020,3,11,2020,95,3,Afghanistan,AF,AFG,38041757,Asia,3.78794281
+04/11/2020,4,11,2020,86,4,Deutschland,DE,DEU,38041757,Asia,3.78268543
+03/11/2020,3,11,2020,95,3,Deutschland,DE,DEU,38041757,Asia,3.78794281
