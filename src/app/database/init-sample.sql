@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `spotifydb`.`artists` (
   `alpha2` VARCHAR(2) NOT NULL,
   `alpha3` VARCHAR(3) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `continent` VARCHAR(45) NOT NULL,
+  `genre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`alpha2`))
 ENGINE = InnoDB;
 
@@ -39,7 +39,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `spotifydb`;
-INSERT INTO `spotifydb`.`artists` (`alpha2`, `alpha3`, `name`, `continent`) VALUES ('DE', 'DEU', 'Deutschland', 'Europa');
+INSERT INTO `spotifydb`.`artists` (`alpha2`, `alpha3`, `name`, `genre`) VALUES ('DE', 'DEU', 'Kygo', 'Pop');
 
 COMMIT;
 
