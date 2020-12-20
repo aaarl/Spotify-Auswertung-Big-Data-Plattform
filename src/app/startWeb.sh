@@ -23,8 +23,8 @@ cd ..
 # Ausführen der YAML-Dateien mit Bauanleitung der Infrastruktur
 echo "Apply instructions to kubernetes to build the necessary infrasructure"
 
-echo "Step 1: mysql-deployment.yml"
-kubectl apply -f mysql-deployment.yml
+echo "Step 1: mysql.yml"
+kubectl apply -f mysql.yml
 
 echo "Step 2: service.yml"
 kubectl apply -f service.yml
