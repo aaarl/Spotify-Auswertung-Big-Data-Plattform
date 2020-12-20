@@ -315,14 +315,16 @@ $ cd ../../..
 
 ## Dokumentation des Source-Code
 
+Im folgenden soll die Ordnerstruktur der Anwendung erklärt werden:
+
 - `doc:` gesamte Dokumentation inklusive Aufgabenstellung
 - `collection:` enthält unsere Datensätze (in .csv Format)
 - `src:` Quellcode für das Aufsetzen des Clusters und die Website
-  - `app:` TODO
-    - `database:` Datenbank
-    - `app-web:` TODO
-  - `data:` Installation
+  - `app:` Beinhaltet alle Dateien, die die Web-Applikation und deren Umgebung aufbauen  
+    - `database:` Scripts für den Insert in die Datenbank
+    - `app-web:` Enthät Javascript Datei der Web-Applikation und Dockerfile, das diese Initiiert
+  - `data:` Alle Dateien, die zur Installation nätig sind
     - `kafka:` Kafka-Cluster
     - `streaming:` Streaming
-    - `batch:` TODO
+    - `batch:` Beinhaltet Skript für Datenbank-Insert 
   - `hdfs_data_lake:` Ansammlung der ganzen Datensätze
