@@ -109,7 +109,7 @@ async function getTotalArtistsFromDatabase(alpha2) {
 	}
 }
 
-// Return all artists where corona cases occurred
+// Return all artists where spotify cases occurred
 async function getAllArtists() {
 	const query = 'SELECT * FROM spotify_cases';
 	return getFromDatabase(query);
