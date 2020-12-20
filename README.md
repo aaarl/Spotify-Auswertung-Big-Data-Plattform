@@ -134,10 +134,10 @@ $ cd ..
 6. Ausführen der YAML-Dateien mit Bauanleitung der Infrastruktur
 
 ```
-$ kubectl apply -f mysql-deployment.yml
-$ kubectl apply -f mysql-service.yml
-$ kubectl apply -f memcached-deployment-and-service.yml
-$ kubectl apply -f app-deployment-service-ingress.yml
+$ kubectl apply -f mysql.yml
+$ kubectl apply -f service.yml
+$ kubectl apply -f memcached.yml
+$ kubectl apply -f deployment.yml
 ```
 
 Alternativ können die einzelnen Schritte über die Ausführung eines Skripts umgesetzt werden:
@@ -312,3 +312,17 @@ $ cd src/data
 $ bash deleteAllSparkpods.sh
 $ cd ../../..
 ```
+
+## Dokumentation des Source-Code
+
+- `doc:` gesamte Dokumentation inklusive Aufgabenstellung
+- `collection:` enthält unsere Datensätze (in .csv Format)
+- `src:` Quellcode für das Aufsetzen des Clusters und die Website
+  - `app:` TODO
+    - `database:` Datenbank
+    - `app-web:` TODO
+  - `data:` Installation
+    - `kafka:` Kafka-Cluster
+    - `streaming:` Streaming
+    - `batch:` TODO
+  - `hdfs_data_lake:` Ansammlung der ganzen Datensätze
