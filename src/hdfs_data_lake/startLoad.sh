@@ -25,4 +25,3 @@ echo "> PW: admin-password"
 echo "3) Access Data Lake via WebHDFS REST API"
 echo "> List a directory: curl -v -u admin:admin-password 'http://KNOX_IP:8080/webhdfs/v1/user/root/input/?op=LISTSTATUS'"
 echo "> Read and open file: curl -v -u admin:admin-password -i -L 'http://KNOX_IP:8080/webhdfs/v1/user/root/input/spotifydata?op=OPEN'"
-
