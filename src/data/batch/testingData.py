@@ -21,7 +21,7 @@ sc = SQLContext(spark)
 # The following creates a DataFrame based on the content of a JSON file
 df = sc.read.load(inputFile, format="csv", sep=",",
                   inferSchema="true", header="true")
-#df = sc.read.load("../../rsrc/dataset.csv", format="csv", sep=",", inferSchema="true", header="true")
+#df = sc.read.load("../../collection/dataset.csv", format="csv", sep=",", inferSchema="true", header="true")
 
 # Test Display of dateRep column
 df.select("date").show()

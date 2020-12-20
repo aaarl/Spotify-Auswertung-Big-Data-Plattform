@@ -49,8 +49,8 @@ hadoop# hdfs dfs -chmod -R 777 hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/resu
 # Upload data
 
 ```
-$ curl -i -k -u admin:admin-password -X PUT 'http://{hadoop-ip}:8080/webhdfs/v1/data/data.csv?op=CREATE&permission=664'
-$ curl -i -k -u admin:admin-password -T data.csv {location value vom ersten request}
+$ curl -i -k -u admin:admin-password -X PUT 'http://{hadoop-ip}:8080/webhdfs/v1/data/dataset.csv?op=CREATE&permission=664'
+$ curl -i -k -u admin:admin-password -T dataset.csv {location value vom ersten request}
 ```
 
 # Upload script to hadoop
