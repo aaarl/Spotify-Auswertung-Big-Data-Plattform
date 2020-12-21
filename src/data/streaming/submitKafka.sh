@@ -7,4 +7,4 @@ spark-submit \
     --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.pyspark.pythonVersion=3 \
     --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
-    hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/app/kafkaStreaming.py
+    hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/app/kafkaStream.py

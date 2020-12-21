@@ -3,6 +3,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode, split
 
 # Create a function to write each batch to the database
+
+
 def foreachBatch(dataframe, _id):
     dataframe.write\
         .mode("overwrite") \
@@ -13,7 +15,8 @@ def foreachBatch(dataframe, _id):
         .option("dbtable", "web_requests") \
         .option("user", "root") \
         .option("password", "mysecretpw") \
-        .save()    
+        .save()
+
 
 if __name__ == "__main__":
 
@@ -43,7 +46,7 @@ if __name__ == "__main__":
     # Generate running word count
     wordCounts = words.groupBy("url").count()
 
-    # Start running the query 
+    # Start running the query
     query = wordCounts \
         .writeStream \
         .outputMode("complete") \

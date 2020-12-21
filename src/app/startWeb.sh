@@ -6,7 +6,7 @@ minikube addons enable ingress
 
 # Setzen des Docker Build Kontextes auf Minikube
 echo "Set docker build context to minikube"
-eval $(minikube docker-env)
+eval $(minikube docker-env --shell bash)
 
 # Bauen des Applikationsimages aus dem Dockerfile
 echo "Build the application image of the docker file"

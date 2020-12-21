@@ -1,5 +1,5 @@
 #! /bin/bash
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add stable https://charts.helm.sh/stable --force-update
 helm install --namespace=default --set hdfs.dataNode.replicas=3 --set yarn.nodeManager.replicas=3 --set hdfs.webhdfs.enabled=true my-hadoop-cluster stable/hadoop
 
 echo "Waiting some time until everything loaded properly ..."

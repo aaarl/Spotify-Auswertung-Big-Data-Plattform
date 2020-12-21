@@ -9,7 +9,7 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
 echo "Build docker image pyspark-k8s"
 docker build -t pyspark-k8s .
 
-# Configure Hadoop 
+# Configure Hadoop
 echo "Configure Hadoop, open remote bash"
 #kubectl exec -it my-hadoop-cluster-hadoop-hdfs-nn-0 -- /bin/bash
 kubectl exec -it my-hadoop-cluster-hadoop-hdfs-nn-0 -- hdfs dfs -mkdir hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/tmp/
@@ -27,9 +27,8 @@ kubectl exec -it my-hadoop-cluster-hadoop-hdfs-nn-0 -- hdfs dfs -chmod -R 777 hd
 # bash updateData.sh
 # cd ../src/data
 
-# bash uploadData.sh
-# bash updateScript.sh
-
+bash updateScript.sh
+bash uploadData.sh
 
 bash batch/submit.sh
 

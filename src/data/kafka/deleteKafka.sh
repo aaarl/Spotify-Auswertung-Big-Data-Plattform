@@ -13,8 +13,7 @@ echo "Deleting statefulsets"
 kubectl delete statefulset.apps/my-kafka-cluster-kafka
 kubectl delete statefulset.apps/my-kafka-cluster-zookeeper
 
-# Uninstall the kafka operator to stop kafka
-echo "Unistall the kafka operator"
+echo "Uninstall the kafka operator"
 helm repo remove strimzi
 helm delete my-kafka-operator
 

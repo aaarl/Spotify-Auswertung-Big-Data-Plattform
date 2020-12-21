@@ -3,7 +3,7 @@
 echo "Start loading Data in HDFS"
 
 echo "Create input folder and load data"
-kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -mkdir -p input && hdfs dfs -chmod -R 777 input | hdfs dfs -put - input/spotifydata"
+kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -mkdir -p input && hdfs dfs -chmod -R 777 input && cat ./collection/dataset.csv | hdfs dfs -put - input/spotifydata"
 
 echo "List folder 'input'"
 kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -ls input"

@@ -17,8 +17,8 @@ def start_server_thread():
                        "Juice WRLD", "Justin Bieber", "Kanye West", "Katy Perry", "Khalid", "Kygo", "Lady Gaga", "Lewis Capaldi", "Maroon 5", "Marshmello", "Nicki Minaj", "OneRepublic", "Ozuna", "Post Malone", "Queen", "Rihanna", "Saint Jhn", "Sam Smith", "Selena Gomez", "Shawn Mendes", "Sia", "Swae Lee", "Taylor Swift", "The Chainsmokers", "The Weeknd", "Tones and I", "Travis Scott", "Tyga"]
             # Endless loop to always create new random data
             while True:
-                # Create a new record with a random country and a random number between 1 and 10
-                line = random.choice(artists) + " " + \
+                # Create a new record with a random artists and a random number between 1 and 10
+                line = random.choice(artists) + "###" + \
                     str(random.randint(1, 10)) + "\n"
                 # Encode the data and send them
                 self.request.sendall(line.encode("UTF-8"))
@@ -53,7 +53,7 @@ def saveToDb(rdd):
     # Get the spark session
     sparkSession = getSparkSessionInstance(conf)
     # Convert the rdd to a row rdd
-    rowRdd = rdd.map(lambda w: Row(country=w[0], count=w[1]))
+    rowRdd = rdd.map(lambda w: Row(artist=w[0], count=w[1]))
     # Create a data frame from the row rdd
     wordsDataFrame = sparkSession.createDataFrame(rowRdd)
 
@@ -81,11 +81,25 @@ ssc = StreamingContext(sc, 10)
 # Read the incoming records
 lines = ssc.socketTextStream("127.0.0.1", 1234)
 
+#
+# Justin Bieber###2
+# Justin Bieber###3
+# Justin Bieber###6
+# Justin Bieber###9
+#
+# Celine Dior###6
+# Celine Dior###3
+#
+
+
 # Transform data as needed
 data = lines\
-    .map(lambda line: line.split(" "))\
+    .map(lambda line: line.split("###"))\
     .map(lambda word: (word[0], int(word[1])))\
     .reduceByKey(lambda x, y: x + y)
+# [{'JustinBieber': 20}, {'Celine Dior': 9}]
+
+#
 # Handle each rdd and save it to the database
 data.foreachRDD(saveToDb)
 
