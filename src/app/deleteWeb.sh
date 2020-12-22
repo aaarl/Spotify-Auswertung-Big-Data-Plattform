@@ -5,8 +5,8 @@
 # Delete the web app pods / services
 echo "Delete the web app"
 
-echo "deployment/memcache-deployment"
-kubectl delete deployment/memcache-deployment
+echo "deployment/my-memcached"
+kubectl delete deployment/my-memcached
 
 echo "deployment/my-super-app-deployment"
 kubectl delete deployment/my-super-app-deployment
@@ -17,8 +17,8 @@ kubectl delete deployment/mysql-deployment
 echo "svc/my-super-app-service"
 kubectl delete svc/my-super-app-service
 
-echo "svc/my-memcached-service"
-kubectl delete svc/my-memcached-service
+echo "svc/my-memcached"
+kubectl delete svc/my-memcached
 
 echo "svc/my-database-service"
 kubectl delete svc/my-database-service

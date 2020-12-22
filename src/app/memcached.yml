@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: memcache-deployment
+  name: my-memcached
   labels:
-    app: memcache-deployment
+    app: my-memcached
 spec:
   # Three memcached instances
   replicas: 1
@@ -32,7 +32,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: my-memcached-service
+  name: my-memcached
 spec:
   # Headless service (i.e., no ip is assigned)
   clusterIP: None
