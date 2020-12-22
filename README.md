@@ -47,11 +47,6 @@ $ # or with explicit no driver (see documentation for further supported driver)
 $ minikube start --driver=none
 ```
 
-Darüber hinaus sind noch folgende Voraussetzungen gegeben:
-
-- Eine lokale Spark Installation
-- Anaconda
-
 ## Ausführung
 
 Alle CMD-Reihen der folgenden Unterkapitel starten jeweils am Kapitelanfang im Home Directory des Git Repositorys.
