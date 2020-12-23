@@ -2,15 +2,29 @@
 
 Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze.
 
-## Beschreibung des Projekts
-
 # Einleitung:
 
-In der Vorlesung “Data Science & Big Data” besteht die Prüfungsleistung aus zwei verschiedenen Laborberichten. Das Ziel der Gruppenaufgabe im Laborbericht 1 ist es, eine Applikation für einen Anwendungsfall zu entwickeln. Diese soll, die in der Vorlesung kennen gelernte Ziel-Architektur, realisieren.
+In der Vorlesung “Data Science & Big Data” besteht die Prüfungsleistung aus zwei verschiedenen Laborberichten.
+Das Ziel der Gruppenaufgabe im Laborbericht 1 ist es, eine Applikation für einen Anwendungsfall zu entwickeln. Diese soll, die in der Vorlesung kennengelernte Ziel-Architektur, realisieren.
+Zu Beginn des Projekts wurde das Projektteam definiert und sich auf eine Projektdokumentation geeinigt.
+Als Versionsverwaltung des Software-Entwicklungsprojekts wurde GitHub ausgewählt. Das Tracken der Aufgaben innerhalb des Projekts erfolgte in der README-Datei des Repositorys.
+Die gruppeninterne Kommunikation erfolgt in einer WhatsApp-Gruppe.
 
-Zu Beginn des Projekts wurde das Projektteam definiert und sich auf eine Projektdokumentation geeinigt. Als Versionsverwaltung des Software-Entwicklungsprojekts wurde sich auf GitHub festgelegt. Das tracken der Aufgaben innerhalb des Projekts erfolgte in der README-Datei des Repositorys. Die gruppeninterne Kommunikation erfolgt in einer WhatsApp-Gruppe.
+Das Repository ist öffentlich und kann unter folgendem Link aufgerufen werden:
+https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform
 
-# Identifikation des Use Cases
+Links sind in Youtube, da in Github keine Datensätze > 100Mb zulässig sind.
+Screencast_001: https://www.youtube.com/watch?v=16CqER2p7Lo
+
+Enthält den gesamten Ablauf (Minikube starten, Start Web App Cluster, Start Kafka, Start Hadoop, Start Spark - Anzeige der entsprechenden Hadoop-Cluster und erfolgreiches Aufsetzen des Setups)
+Screencast_002: https://www.youtube.com/watch?v=4Zse5u0wUug
+
+Problematik Upload von Dateien in HDFS (obwohl HDFS erfolgreich konfiguriert und ansprechbar über Web-UI)
+Screencast_003: https://www.youtube.com/watch?v=5oyLurJH1rc
+
+Kommunikation HDFS über Web-UI, Aufrufe mit HTTP Request Maker, Anzeige der entsprechenden Logs für Hadoop, Anzeige der Datanode Information und des Datanode Usage Histogramms, Veranschaulichung der darin enthaltenen Informationen (Volume Information und Block Pools)
+
+# Erarbeitung des Use Cases
 
 In einem, per Videoschalte durchgeführten Workshop, wurde der Anwendungsfall für die Big Data Applikation erarbeitet. Als erstes wurden in einem Brainstorming fünf verschiedene Use Cases genannt. Diese wurden anschließend von den Projektmitgliedern ausformuliert.
 
@@ -27,7 +41,8 @@ Nach einer sorgfältigen Erwägung des Fürs und Widers der jeweiligen Use Cases
 # Konzept
 
 Aufgabenstellung
-Die zugrundeliegende Aufgabenstellung und die Rahmenbedingungen sind dem verlinkten PDF Dokument zu entnehmen.
+Die zugrundeliegende Aufgabenstellung und die Rahmenbedingungen sind dem verlinkten PDF Dokument zu entnehmen:
+https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Aufgabenstellung_BigData_Vorlesung_Okt_2020.pdf
 
 ## Technische Voraussetzungen
 
@@ -51,7 +66,7 @@ $ bash start.sh
 
 Um die unten genannten automatisierten Skripte nutzen zu können, muss der korrekte Pfad gewährleistet werden (über `cd {path}`)
 
-### Start Web Application-Cluster
+## Start Web Application-Cluster
 
 ```
 # Selektieren des Web Applikation Directorys
@@ -82,9 +97,9 @@ Alternativ können die einzelnen Schritte über die Ausführung des Skriptes `st
 $ bash startWeb.sh
 ```
 
-### Start Big Data-Cluster
+## Start Big Data-Cluster
 
-#### Start Kafka
+### Start Kafka
 
 Der Start von Kafka erfolgt anhand eines bereitgestellten Skripts:
 
@@ -92,7 +107,7 @@ Der Start von Kafka erfolgt anhand eines bereitgestellten Skripts:
 $ bash startKafka.sh
 ```
 
-#### Start Hadoop
+### Start Hadoop
 
 ```
 # Selektieren des HDFS-Directorys
@@ -130,7 +145,7 @@ Alternativ können die vorangegangen Setup-Schritte über folgende Kommandozeile
 $ bash startHDFS.sh
 ```
 
-#### Start Spark and Submit Instructions
+### Start Spark and Submit Instructions
 
 Spark lässt sich mit folgendem Befehl ausführen:
 
@@ -156,7 +171,7 @@ $ bash submitStreaming.sh
 $ bash submitKafka.sh
 ```
 
-### Upload der Daten
+## Upload der Daten
 
 Die unter `/collection` befindlichen Daten können über die folgenden Kommandozeilenbefehle in das HDFS-Cluster geladen werden:
 
@@ -178,7 +193,7 @@ Der folgende Aufruf submitted alle Skripte an Spark:
 
 ```
 $ cd source/data
-$ bash submit.sh
+$ bash submitData.sh
 $ bash submitStreaming.sh
 $ bash submitKafka.sh
 ```
@@ -207,27 +222,11 @@ $ bash deleteKafka.sh
 $ bash deleteAllSparkpods.sh
 ```
 
-## Dokumentation des Source-Code
-
-Im folgenden soll die Ordnerstruktur der Anwendung erklärt werden:
-
-- `doc:` gesamte Dokumentation inklusive Aufgabenstellung
-- `collection:` enthält unsere Datensätze (in .csv Format)
-- `source:` Quellcode für das Aufsetzen des Clusters und die Website
-  - `app:` Beinhaltet alle Dateien, die die Web-Applikation und deren Umgebung aufbauen
-    - `database:` Scripts für den Insert in die Datenbank
-    - `app-web:` Enthät Javascript Datei der Web-Applikation und Dockerfile, das diese Initiiert
-  - `data:` Alle Dateien, die zur Installation nätig sind
-    - `kafka:` Kafka-Cluster
-    - `streaming:` Streaming
-    - `batch:` Beinhaltet Skript für Datenbank-Insert
-  - `hdfs_data_lake:` Ansammlung der ganzen Datensätze
+# Architektur
 
 ## Ziel-Architektur
 
 Im Rahmen der Vorlesung wurden zwei fundamentale Architekturmodelle zur möglichen Modellierung einer Big Data Science Plattform vertieft. Eine solche Architektur wird benötigt, um die Anforderungen an die Anwendung optimal lösen zu können. Zunächst werden die zwei Architekturen miteinander verglichen und anschließend eine Auswahl vorgenommen.
-
-## Kappa-Architektur vs. Lambda-Architektur
 
 ### Lambda Architektur
 
@@ -244,30 +243,99 @@ Im folgenden wird die Lamda-Architektur aus der Vorlesung auf unser Projekt übe
 
 ![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Lambda-Architektur.PNG)
 
-## Skizzierung der gewählten Architektur
+## Ausgewählte Architektur
 
-TODO AF: Bild der gesamten Architektur
+![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Lambda-Architektur.PNG)
 
-Die Pfeile in der Abbildung zeigen vom Aufrufer zum Empfänger. Der Load Balancer empfängt Web-Anfragen und leitet sie an die Web Server weiter. Die Web Server können je nach Anfrage auf den Cache oder auf die Datenbank zugreifen. Bei der Anfrage /webrequests, werden die Daten aus der Datenbank gelesen und nicht im Cache gespeichert. Alle anderen Anfragen versuchen zunächst die Daten aus dem Cache zu laden und wenn diese dort nicht vorhanden sind, greifen sie auf die Datenbank zu, speichern die Daten in den Cache und geben sie anschließend zurück. Die URLs der Anfragen werden mithilfe von Kafka in ein Topic geschrieben. Die Verarbeitung der Daten erfolgt mithilfe von Spark Structured Streaming. Hierbei werden die Anfragen nach der URL gruppiert und in die Datenbank web_requests gespeichert.
+Die obige Abbildung beschreibt die gesamte Big-Data Architektur mit den dazugehörigen Partitionen wie der Proprietary Application (Web Application), der Lambda-Architektur welche in Abschnitt 4.2 näher beschrieben wurde, dem Data-Lake zur Batch-Layer und Spark für die Speed-Layer (Berechnung der neuesten Daten/ Echtzeit-Ansicht).
+Die Pfeile in der Abbildung zeigen vom Aufrufer zum Empfänger. Der Load Balancer empfängt Web-Anfragen und leitet diese an die Web-Server weiter.
+Die Web Server können je nach Anfrage auf den Cache oder auf die Datenbank zugreifen. Bei der Anfrage (Web-Requests) sollen die Daten aus der Datenbank gelesen und nicht im Cache gespeichert werden.
+Alle anderen Anfragen versuchen zunächst die Daten aus dem Cache zu laden und wenn diese dort nicht vorhanden sind, greifen sie auf die Datenbank zu, speichern die Daten in den Cache und geben sie anschließend zurück.
+Die URLs der Anfragen werden mithilfe von Kafka in ein Topic geschrieben. Die Verarbeitung der Daten erfolgt mithilfe von Spark Structured Streaming.
+Hierbei werden die Anfragen nach der URL gruppiert und in die Datenbank gespeichert. Im Batch-Layer erfolgt zunächst die Speicherung der CSV-Dateien im Data Lake und anschließend deren Verarbeitung mithilfe von Spark (dabei wird die erstellte CSV-Datei zusammengeführt und anschließend in der Datenbank gespeichert).
+Der Speed-Layer bearbeitet nicht nur die Daten die von dem Kafka-System geliefert werden, sondern simuliert durch das Generieren von Daten die Anzeige von neuen und aktuellen Spotify-Datensätze.
+Dies wird durch einen TCP Server realisiert und an die Spark Streaming Komponente sendet. Dabei werden die Künstler und die Anzahl der Streams (Klickzahl des entsprechenden artist über timesListened ) zufällig gewählt und verarbeitet. Abschließend erfolgt die Speicherung der Daten in der Datenbank.
 
-Im Batch Layer erfolgt zunächst die Speicherung der CSV-Dateien im Data Lake und anschließend deren Verarbeitung mithilfe von Spark (dabei wird die erstellte CSV-Datei zusammengeführt und anschließend in der Datenbank gespeichert).
+## Dokumentation
 
-Der Speed Layer bearbeitet nicht nur die Daten die vom Kafka System geliefert werden, sondern simuliert durch das Generieren von Daten die Anzeige von neuen und aktuellen Spotify-Datensätze. Dies wird durch einen TCP Server realisiert und an die Spark Streaming Komponente sendet. Dabei werden die Künstler und die Anzahl der Streams (Klickzahl des entsprechenden Künsterls über `timesListened`) zufällig gewählt und verarbeitet. Abschließend erfolgt die Speicherung der Daten in der Datenbank.
+Im Folgenden soll die Ordnerstruktur der Anwendung erklärt werden, aus der die Struktur
+des Quellcodes hervorgeht:
 
-# Komplikationen beim Umsetzen des Big-Data-Projektes:
+- **documentation**: gesamte Dokumentation inklusive Aufgabenstellung
+- **collection**: enthält unsere Datensätze (in .csv Format)
+- **source**: Quellcode für das Aufsetzen des Clusters und die Website
+- **application**: Beinhaltet alle Dateien, die die Web-Applikation und deren Umgebung aufbauen
+- **database**: Scripts für den Insert in die Datenbank
+- **web-application**: Enthält Javascript Datei der Web-Applikation und Dockerfile, welches diese initiiert
+- **data**: Alle Dateien, die zur Installation nötig sind
+- **kafka**: Kafka-Cluster
+- **streaming**: Streaming
+- **batch**: Beinhaltet Skript für Datenbank-Insert
+- **hadoop**: Ansammlung der ganzen Datensätze
 
-### Windows 10 Home (Hyper-V)
+# Technische Hindernisse
 
-### Lauffähigkeit der einzelnen Systeme
+## Windows 10 Home/ Hyper-V
 
-### Nicht möglich Daten ins HDFS zu schreiben
+Nach Ausführung des Bash-Skriptes `startWeb.sh` erhält der Nutzer folgende Warnung beim Ausführen des Befehls `minikube addons enable ingress`:
 
-Nach Aufsetzen aller Container
+`Exiting due to MK_USAGE: Due to networking limitations of driver docker on windows, ingress addon is not supported. Alternatively to use this addon you can use a vm-based driver: 'minikube start --vm=true'`
 
-### Programmierung ohne
+Daraus resultiert, dass es dem Nutzer nicht möglich ist, Addons für das Minikube zu aktivieren oder freizuschalten.
+Somit ist eine weitere Voraussetzung eine lauffähige Windows 10 Pro-Version zu besitzen, da nur hier die Freischaltung von Hyper-V möglich ist.
+Docker Desktop auf Windows 10 unterstützt zwei Backends: HyperV und WSL2. WSL2 verwendet ebenfalls Hyper-V. Daher ist es nicht möglich Docker Desktop ohne aktiviertes Hyper-V zu starten bzw. zu verwenden.
+Um Windows-Container (ohne Hyper-V) auszuführen, muss ein laufender Docker-Engine-Daemon installiert werden, welcher auf die benannten Pipes hört.
+Dieser Daemon kann native Windows-Container über eine Prozessisolierung ausführen.
+Nach Umstieg auf eine Windows 10 Pro-Version konnte das obige Problem behoben werden.
+Anschließend schien es, dass Minikube nicht als VM läuft, dieses aber den Docker-Treiber verwendet.
+Der Docker-Treiber benötigt eine höhere Kapazität der Speicherressourcen und somit wurde auch die Leistung der `--memory` für die nächsten Tests auf `--memory = 6114` gesetzt.
+Um die Lauffähigkeit garantieren zu können, wurden hier auch weitere Parameter wie bspw. `--vm = true` und `--driver = hyperkit` ergänzt. Nach Auftreten der unten geschilderten Probleme (6.2 bis 6.5) schien es, dass die Windows-Umgebung gänzlich ungeeignet für den geschilderten Use-Case ist.
+Daher wurde die strategische Entscheidung getroffen die weitere Implementierung und Ausführung auf einer virtuellen Maschine (Linux Ubuntu auszuführen).
 
-Web-Abfrage auf die Hadoop-Id ist nicht möglich. Daher war es nicht möglich, die Ergebnisse und Funktionalitäten der jeweiligen Verarbeitungs-Skripte nachzuvollziehen. Die entsprechenden Skripte zur Datenverarbeitung und -übertragung mussten daher ohne Überprüfung geschrieben werden. Diese wurden nach Logik und aus Beispielen der Vorlesung auf den eigenen Use Case übertragen.
+## Lauffähigkeit der einzelnen Systeme
 
-### Cluster und Container werden erfolgreich hochgefahren und laufen (Status: Running)
+Bereits während der Ausführung der einzelnen Bash-Skripte erscheinen sporadische
+Fehlermeldungen oder Warnungen (unter Linux Ubuntu kaum, jedoch vermehrt unter dem
+Windows-Betriebssystem) wie:
 
-### Apache Knox
+- `Error: failed to download "strimzi/strimzi-kafka-operator" (hint: running `helm repo
+  update` may help)`
+- `“stable" has been added to your repositories` `WARNING: This chart is deprecated`
+- `Warning: networking.k8s.io/v1beta1 Ingress is deprecated in v1.19+, unavailable in v1.22+ 12`
+- (ohne Hyper-V auf Windows): `CrashLoopBackOff im “mysql-deployment-7549d55948-vgl87”-Pod`
+
+## Hochladen der Daten ins HDFS
+
+Wie aus dem Screencast zu entnehmen ist, sind alle Hadoop-Cluster und Pods lauffähig und besitzen eine konstante Lauffähigkeit ohne abzustürzen.
+Jedoch ist es nicht möglich, Daten in das Cluster hochzuladen. Eine Statusabfrage über Web-Api, Terminal oder pyweb ist möglich und wird während des Betriebs gewährleistet.
+Beim Test manuell eine Datei in das HDFS hochzuladen erscheint folgende Fehlermeldung:
+
+`Couldn’t find datanode to write file. Method Not Allowed.`
+
+Auch in der Datanode-Übersicht (Web-UI) wird die Nutzung mit entsprechendem Histogramm dargestellt.
+Auch eine HTTP-Adresse wird angezeigt (Screencast_003 in Minute 3:15) und sämtliche Aufrufe über einen HTTP-Request-Marker können ausgeführt werden.
+Auch der Status (Screencast_003 in Minute 5:17)
+
+## Cluster (Status: Running)
+
+Nach erfolgreichen Aufsetzen der Cluster ist es dennoch nicht möglich gewesen, einen URL-Aufruf unter der Hadoop-IP durchzuführen.
+
+BILD
+
+Wie aus der Abbildung zu entnehmen ist, sind alle Hadoop-Cluster, Kubernetes-Pods und das gesamte Deployment valid und erreichbar.
+In Screencast_002 ist zu sehen, wie der Aufruf einzelner Hadoop-Cluster via VS-Code-Terminal versucht wird.
+Aus den Directory-Logs über die Web-UI (Aufruf Hadoop-Cluster) ist ersichtlich, warum eine Verbindung bzw. das Hochladen von Dateien nicht gewährleistet werden kann.
+In der Hadoop-Web-UI werden die Nodes der einzelnen Cluster und die Heartbeats angezeigt.
+
+## Apache Knox
+
+Das Hauptproblem scheint an Apache Knox zu sein. Apache Knox ist ein Application Gateway für die Interaktion mit den REST-APIs und UIs von Apache-Hadoop-Implementierungen.
+Dieses Diagramm ist in erster Linie für den Zugriff auf HDFS von außerhalb eines Kubernetes-Clusters über einfache REST-APIs angedacht.
+In dem Spotify-Use-Case scheint Apache Knox sich auch auf das HDFS zu verbinden, jedoch ist es nicht möglich (Problem 6.3) Dateien hochzuladen.
+Die Annahme ist, dass Apache und Knox nicht kompatibel sind. Anhand einer nicht ersichtlichen Meldung während des Programm-Durchlaufs ist aufgefallen,
+dass ein verwendetes Repository (aus dem Skript) nicht mehr supportet wird. Es handelt sich um das Repository helm/charts (Link: https://github.com/helm/charts ).
+Ab dem 13. November wurde der Support vollständig eingestellt. Zu diesem Zeitpunkt werden die Stable- und Incubator-Chart-Repos als veraltet markiert.
+Daher wurden zu dem Zeitpunkt diese Diagramm-Repos vermutlich gelöscht und sind nicht mehr verfügbar. Dieses Git-Repository wird als Archiv beibehalten.
+Da sonstige Probleme oder Bugs nicht mehr behoben werden, kann dies zu den oben genannten Probleme führen.
+Aus dem Vorlesungsmaterial wird eine Alternativlösung nicht ersichtlich.
+Möglich wäre es, ein anderes `helm-chart zu verwendet`, jedoch muss dieses daraufhin mit dem Apache Knox (Link: https://github.com/pfisterer/apache-knox-helm ) kompatibel sein.
