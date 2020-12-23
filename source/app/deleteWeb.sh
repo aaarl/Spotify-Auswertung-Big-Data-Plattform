@@ -1,8 +1,4 @@
 #!/bin/bash
-
-# todo af: check the delete queries!
-
-# Delete the web app pods / services
 echo "Delete the web app"
 
 echo "deployment/my-memcached"

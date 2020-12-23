@@ -1,5 +1,4 @@
 FROM node:10-alpine
-
 COPY package.json /source/
 WORKDIR /source/
 RUN apk --no-cache add \

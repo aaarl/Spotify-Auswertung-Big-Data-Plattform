@@ -46,228 +46,193 @@ Alle CMD-Reihen der folgenden Unterkapitel starten jeweils am Kapitelanfang im H
 Eine Anleitung zu einem schrittweisen Aufsetzen des Clusters, der Web Application und Big Data, ist in den folgenden Unterkapiteln erläutert. Alternativ kann die Big Data Science Plattform, unter Berücksichtigung der Voraussetzungen, anhand folgender Anleitung vollständig automatisiert aufgebaut werden:
 
 ```
-$ cd source
 $ bash start.sh
-$ cd ..
 ```
+
+Um die unten genannten automatisierten Skripte nutzen zu können, muss der korrekte Pfad gewährleistet werden (über `cd {path}`)
 
 ### Start Web Application-Cluster
 
-1. Selektieren des Web Applikation Directorys
-
 ```
+# Selektieren des Web Applikation Directorys
 $ cd source/app
-```
 
-2. Minikube ingress Add-on freischalten
-
-```
+# Minikube ingress Add-on freischalten
 $ minikube addons enable ingress
-```
 
-3. Setzen des Docker Build Kontextes auf Minikube
-
-```
+# Setzen des Docker Build Kontextes auf Minikube
 $ eval $(minikube docker-env)
-```
 
-4. Bauen des Applikationsimages aus dem Dockerfile `source/app/app-web/Dockerfile`
-
-```
+# Bauen des Applikationsimages aus dem Dockerfile `source/app/app-web/Dockerfile`
 $ cd web
 $ docker build -t my-super-web-app .
 $ cd ..
-```
 
-5. Bauen des Databaseimages aus dem Dockerfile `source/app/database/Dockerfile`
-
-```
+# Bauen des Databaseimages aus dem Dockerfile `source/app/database/Dockerfile`
 $ cd db
 $ docker build -t my-super-mysql-database .
 $ cd ..
-```
 
-6. Ausführen der YAML-Dateien mit Bauanleitung der Infrastruktur
-
-```
+Ausführen der YAML-Dateien mit Bauanleitung der Infrastruktur
 $ kubectl apply -f mysql.yml
 $ kubectl apply -f service.yml
 $ kubectl apply -f memcached.yml
 $ kubectl apply -f deployment.yml
+
+Alternativ können die einzelnen Schritte über die Ausführung des Skriptes `startWeb.sh` umgesetzt werden:
 ```
 
-Alternativ können die einzelnen Schritte über die Ausführung eines Skripts umgesetzt werden:
-
-```
-$ cd source/app
 $ bash startWeb.sh
+
 ```
 
 ### Start Big Data-Cluster
-
 #### Start Kafka
 
 Der Start von Kafka erfolgt anhand eines bereitgestellten Skripts:
-
 ```
-$ cd source/data/kafka
+
 $ bash startKafka.sh
+
 ```
 
 #### Start Hadoop
-
-1. Selektieren des HDFS-Directorys
-
 ```
+
+# Selektieren des HDFS-Directorys
+
 $ cd source/hdfs_data_lake
-```
 
-2. Helm Repository 'stable' hinzufügen und HDFS-Cluster starten
+# Helm Repository 'stable' hinzufügen und HDFS-Cluster starten
 
-```
-$ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-$ helm install --namespace=default --set hdfs.dataNode.replicas=3 --set yarn.nodeManager.replicas=3 --set hdfs.webhdfs.enabled=true my-hadoop-cluster stable/hadoop
+$ helm repo add stable https://charts.helm.sh/stable --force-update
+$ helm install --namespace=default --set hdfs.webhdfs.enabled=true my-hadoop-cluster stable/hadoop
+
 ```
 
 Die "Replicas" werden im Rahmen dieser prototypischen Anwendung jeweils auf drei gesetzt. Im Praxisfall würde die Anzahl dieser Nodes je nach Bedarf nach oben oder unten skaliert werden.
 
-Für Demo-Zwecke wurde hier im Nachgang ein künstlicher Timer von 2 Minuten eingebaut, um bei der Erst-Erstellung der Docker-Container genügend Vorlaufzeit zur Verfügung zu stellen. Je nach lokaler Umgebung, kann dieser Schritt längere Zeit beanspruchen.
-
-3. Helm repository 'pfisterer-knox' hinzufügen
+Um bei der Erst-Erstellung der Docker-Container genügend Vorlaufzeit zur Verfügung zu stellen wurde ein `sleep` eingebaut. Je nach lokaler Umgebung, kann dieser Schritt längere Zeit beanspruchen. Alternativ kann hier auch das Skript `startHDFS_1.sh` genutzt werden. Hier wird eine Schleife erzeugt, die Logs ausgibt bis die Umgebung eingerichtet wurde.
 
 ```
+
+# Helm repository 'pfisterer-knox' hinzufügen
+
 $ helm repo add pfisterer-knox https://pfisterer.github.io/apache-knox-helm/
 $ helm install \
-        --set "knox.hadoop.nameNodeUrl=hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/"  \
-        --set "knox.hadoop.resourceManagerUrl=http://my-hadoop-cluster-hadoop-yarn-rm:8088/ws" \
-        --set "knox.hadoop.webHdfsUrl=http://my-hadoop-cluster-hadoop-hdfs-nn:50070/webhdfs/" \
-        --set "knox.hadoop.hdfsUIUrl=http://my-hadoop-cluster-hadoop-hdfs-nn:50070" \
-        --set "knox.hadoop.yarnUIUrl=http://my-hadoop-cluster-hadoop-yarn-ui:8088" \
-        --set "knox.servicetype=LoadBalancer" \
-        knox pfisterer-knox/apache-knox-helm
+ --set "knox.hadoop.nameNodeUrl=hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/" \
+ --set "knox.hadoop.resourceManagerUrl=http://my-hadoop-cluster-hadoop-yarn-rm:8088/ws" \
+ --set "knox.hadoop.webHdfsUrl=http://my-hadoop-cluster-hadoop-hdfs-nn:50070/webhdfs/" \
+ --set "knox.hadoop.hdfsUIUrl=http://my-hadoop-cluster-hadoop-hdfs-nn:50070" \
+ --set "knox.hadoop.yarnUIUrl=http://my-hadoop-cluster-hadoop-yarn-ui:8088" \
+ --set "knox.servicetype=LoadBalancer" \
+ knox pfisterer-knox/apache-knox-helm
 
-```
+# 'input' Ordner erstellen und Daten initial laden
 
-4. 'input' Ordner erstellen und Daten initial laden
-
-```
 $ kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -mkdir -p input && hdfs dfs -chmod -R 777 input | hdfs dfs -put - input/spotifydata"
 $ kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -ls input"
+
 ```
 
 Alternativ können die vorangegangen Setup-Schritte über folgende Kommandozeilenbefehle zusammengefasst werden:
-
 ```
-$ cd source/hdfs_data_lake
+
 $ bash startHDFS.sh
+
 ```
 
 #### Start Spark and Submit Instructions
-
 Spark lässt sich mit folgendem Befehl ausführen:
-
 ```
-$ cd source/data
+
 $ bash startSpark.sh
+
 ```
 
 Das Skript kümmert sich um die Ausführung der folgenden Arbeitsschritte:
 
-- Anlegen von entsprechenden Berechtigungen in Kubernetes
-- Transfer der Daten und Skripte in das HDFS-Cluster
-- Durchführung des Spark-Submits für das Batch-Processing zur Verarbeitung der Daten aus dem HDFS-Cluster und die Ablage in die MySQL Datenbank
-- Starten der Streaming Prozesse im Hintergrund
+1. Anlegen von entsprechenden Berechtigungen in Kubernetes
+2. Transfer der Daten und Skripte in das HDFS-Cluster
+3. Durchführung des Spark-Submits für das Batch-Processing zur Verarbeitung der Daten aus dem HDFS-Cluster und die Ablage in die MySQL Datenbank
+4. Starten der Streaming Prozesse im Hintergrund
 
 Beide Streaming Prozesse können auch über den folgenden Befehl gestartet werden:
-
 ```
+
 $ bash startStreaming.sh
+
 ```
 
 Mit dem folgendem Befehl wird das Stream-Processing in Spark aktiviert:
-
 ```
+
 $ bash submitStreaming.sh
+
 ```
 
 Mit dem folgenden Befehl wird das Stream-Processing aus Kafka aktiviert:
-
 ```
+
 $ bash submitKafka.sh
+
 ```
 
 ### Upload der Daten
-
 Die unter `/collection` befindlichen Daten können über die folgenden Kommandozeilenbefehle in das HDFS-Cluster geladen werden:
-
 ```
-$ cd source/data
+
 $ bash uploadData.sh
+
 ```
 
-### Aktualisierung der Daten
+### Aktualisierung der Daten (falls notwendig)
 
 Der folgende Aufruf, aktualisiert die Datenanalyseskripte und transferiert sie an das HDFS-Cluster:
-
 ```
+
 $ cd source/data
 $ bash updateScript.sh
+
 ```
 
 ### Submit der Skripte
-
 Der folgende Aufruf submitted alle Skripte an Spark:
-
 ```
+
 $ cd source/data
 $ bash submit.sh
 $ bash submitStreaming.sh
 $ bash submitKafka.sh
+
 ```
 
 ## Herunterfahren der Cluster
-
 Die Cluster können entweder einzeln oder vollständig heruntergefahren werden. Die folgende Ausführung beschreibt, wie das vollständige herunterfahren der Cluster, über ein Skript, erfolgen kann:
-
 ```
-$ cd source
+
 $ bash delete.sh
-$ cd ..
-```
-
-Im Folgenden wird beschrieben, wie die einzelnen Cluster einzelnen herunterzufahren sind:
-
-1. Web-Cluster
 
 ```
-$ cd source/app
+
+Im Folgenden wird beschrieben, wie die einzelnen Cluster einzelnen herunterzufahren sind (entsprechende Pfadvergabe ist hier zu beachten):
+```
+
+# Web-Cluster
+
 $ bash deleteWeb.sh
-$ cd ../..
-```
 
-2. Hadoop-Cluster
+# Hadoop-Cluster
 
-```
-$ cd source/hdfs_data_lake
 $ bash deleteHDFS.sh
-$ cd ../..
-```
 
-3. Kafka-Cluster
+# Kafka-Cluster
 
-```
-$ cd source/data/kafka
 $ bash deleteKafka.sh
-$ cd ../../..
-```
 
-4. Spark
+# Spark
 
-```
-$ cd source/data
 $ bash deleteAllSparkpods.sh
-$ cd ../../..
-```
 
 ## Dokumentation des Source-Code
 
@@ -315,3 +280,7 @@ Im Batch Layer erfolgt zunächst die Speicherung der CSV-Dateien im Data Lake un
 Der Speed Layer bearbeitet nicht nur die Daten die vom Kafka System geliefert werden, sondern simuliert durch das Generieren von Daten die Anzeige von neuen und aktuellen Spotify-Datensätze. Dies wird durch einen TCP Server realisiert, der in kurzen Zeitabständen neue Daten generiert und an die Spark Streaming Komponente sendet. Dabei wird ein Künstler und die Anzahl der Streams (Klickzahlen in einem beliebigen Lied) zufällig gewählt und verarbeitet. Abschließend erfolgt die Speicherung der Daten in der Datenbank live_spotify.
 
 TODO AF: Abbildung der Architektur
+
+```
+
+```

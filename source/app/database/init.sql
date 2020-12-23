@@ -16,9 +16,6 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
--- -----------------------------------------------------
--- Data for table `spotifydb`.`live_spotify`
--- -----------------------------------------------------
 START TRANSACTION;
 USE `spotifydb`;
 INSERT INTO `spotifydb`.`live_spotify` (`artist`, `timesListened`) VALUES ('test', '100');
@@ -232,4 +229,3 @@ INSERT INTO `spotifydb`.`live_spotify` (`artist`, `timesListened`) VALUES ('test
 INSERT INTO `spotifydb`.`live_spotify` (`artist`, `timesListened`) VALUES ('test', '100');
 
 COMMIT;
-
