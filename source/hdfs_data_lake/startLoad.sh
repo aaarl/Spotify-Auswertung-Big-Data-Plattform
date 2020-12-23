@@ -3,6 +3,7 @@
 echo "Start loading Data in HDFS"
 
 echo "Create input folder and load data"
+# Dataset was uploaded to a private repo (via snippet functionality) to apply curl expression
 kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -mkdir -p input && hdfs dfs -chmod -R 777 input && curl https://gitlab.com/arl_ferhati/ares/-/snippets/2052928/raw/master/dataset.csv | hdfs dfs -put - input/spotifydata"
 echo "Create input folder and load data - DONE"
 

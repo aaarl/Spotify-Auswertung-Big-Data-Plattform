@@ -1,5 +1,5 @@
 #! /bin/bash
-
+# startHDFS was split into two parts to better understand the individual steps
 # link to repo: https://github.com/pfisterer/apache-knox-helm
 helm repo add pfisterer-knox https://pfisterer.github.io/apache-knox-helm/
 helm install \
