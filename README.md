@@ -231,7 +231,16 @@ Im Rahmen der Vorlesung wurden zwei fundamentale Architekturmodelle zur möglich
 
 ### Lambda Architektur
 
-Die Lambda Architektur wurde 2011 von Nathan Marz vorgestellt. Die Besonderheit der Architektur liegt in der Aufteilung zwischen einem Batch und Speed Layer begründet. Im Batch Layer werden die eingehenden Rohdaten gespeichert und verarbeitet. Die Daten werden zunächst nicht prozessiert, sondern erst nach bestimmten Zeitabständen. Dabei können die Zeitfenster von einigen Stunden bis hin zu Wochen variieren. Die Prozessierung im Batch Layer wird auf allen bis dahin gesammelten Daten durchgeführt und kann daher einige Zeit in Anspruch nehmen. Das Ergebnis wird anschließend im Serving-Layer gespeichert. Um neu eintreffende Daten nicht erst im nächsten Batch Prozess abzuarbeiten, erfolgt die Verarbeitung dieser Daten im Speed Layer. Dieser prozessiert die Daten in Echtzeit und stellt eine Ergänzung der Batch-Ansicht dar. Zur Beschleunigung des Vorgangs wird oftmals auf die komplexeren und aufwändigeren Regeln zur Vorverarbeitung der Daten verzichtet. Das Ergebnis des Speed Layers wird ebenfalls im Serving-Layer gespeichert. Im folgenden wird die Lamda-Architektur aus der Vorlesung auf unser Projekt übertragen und dargestellt:
+Eine Lambda-Architektur beschreibt einen Systemaufbau aus drei Bereichen, den sogenannten Layern, bestehend aus Batch Layer, Speed Layer und Serving Layer.
+Die Architektur wurde von Nathan Marz entwickelt und gehört in den Bereich der sogenannten Big Data Technologien.
+Eine Lambda-Architektur verwendet unterschiedliche Technologien zur Verarbeitung der riesigen Datenmengen. In den einzelnen Layern kommen spezialisierte Systeme, wie zum Besipiel Apache Hadoop, zum Einsatz, die für die jeweilige Aufgabe optimiert werden.
+Mit der Lambda-Architektur lassen sich riesige Datenmengen in relativ kurzer Zeit speichern und verarbeiten. Das Verarbeitungsprinzip leitet sich aus der funktionalen Programmierung ab, in der Daten nie verändert, sondern lediglich Kopien erzeugt und gespeichert werden.
+
+Die Besonderheit der Architektur liegt in der Aufteilung zwischen einem Batch und Speed Layer begründet. Im Batch Layer werden die eingehenden Rohdaten gespeichert und verarbeitet. Die Daten werden zunächst nicht prozessiert, sondern erst nach bestimmten Zeitabständen. Dabei können die Zeitfenster von einigen Stunden bis hin zu Wochen variieren. Die Prozessierung im Batch Layer wird auf allen bis dahin gesammelten Daten durchgeführt und kann daher einige Zeit in Anspruch nehmen. Das Ergebnis wird anschließend im Serving-Layer gespeichert. Um neu eintreffende Daten nicht erst im nächsten Batch Prozess abzuarbeiten, erfolgt die Verarbeitung dieser Daten im Speed Layer. Dieser prozessiert die Daten in Echtzeit und stellt eine Ergänzung der Batch-Ansicht dar. Zur Beschleunigung des Vorgangs wird oftmals auf die komplexeren und aufwändigeren Regeln zur Vorverarbeitung der Daten verzichtet. Das Ergebnis des Speed Layers wird ebenfalls im Serving-Layer gespeichert.
+
+_Quelle: https://www.datenbanken-verstehen.de/lexikon/lambda-architektur/_
+
+Im folgenden wird die Lamda-Architektur aus der Vorlesung auf unser Projekt übertragen und dargestellt:
 
 ![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Lambda-Architektur.PNG)
 
