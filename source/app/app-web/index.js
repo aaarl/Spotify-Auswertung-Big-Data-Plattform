@@ -161,7 +161,7 @@ async function getData(key, id, f) {
 
 // Return response
 function send_response(response, data) {
-  response.send(`<h1>Hello k8s</h1>
+  response.send(`
 			<ul>
 				<li>Host ${os.hostname()}</li>
 				<li>Date: ${new Date()}</li>
@@ -198,13 +198,13 @@ function sendToKafka(message) {
 
 // Send Home Page
 app.get("/", function (request, response) {
-  response.send(`Welcome to the Spotify Big Data Plattform by
+  response.send(`Welcome, this is the Big-Data project from
 			<ul>
-				<li>Arl Ferhati</li>
-				<li>Sven Fischer</li>
-				<li>Lucas Zodel</li>
-				<li>Maximilian Höger</li>
-				<li>Mark Bühler</li>
+        <li>Arl Ferhati</li>
+        <li>Lucas Zodel</li>
+        <li>Mark Bühler</li>
+        <li>Maximilian Höger</li>
+        <li>Sven Fischer</li>
 			</ul>
 			The following URL commands are supported:
 			<ul>
