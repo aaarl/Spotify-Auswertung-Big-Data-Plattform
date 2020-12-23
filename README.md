@@ -262,6 +262,8 @@ Der Speed Layer bearbeitet nicht nur die Daten die vom Kafka System geliefert we
 
 ### Nicht möglich Daten ins HDFS zu schreiben
 
+Nach Aufsetzen aller Container
+
 ### Programmierung ohne
 
 Web-Abfrage auf die Hadoop-Id ist nicht möglich. Daher war es nicht möglich, die Ergebnisse und Funktionalitäten der jeweiligen Verarbeitungs-Skripte nachzuvollziehen. Die entsprechenden Skripte zur Datenverarbeitung und -übertragung mussten daher ohne Überprüfung geschrieben werden. Diese wurden nach Logik und aus Beispielen der Vorlesung auf den eigenen Use Case übertragen.
