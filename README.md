@@ -246,10 +246,26 @@ Im folgenden wird die Lamda-Architektur aus der Vorlesung auf unser Projekt übe
 
 ## Skizzierung der gewählten Architektur
 
-Der folgenden Abbildung 1 ist die zugrundeliegende Architektur der Big Data Science Plattform zu entnehmen. Die Pfeile in der Abbildung zeigen vom Aufrufer zum Empfänger. Der Load Balancer empfängt Web-Anfragen und leitet sie an die Web Server weiter. Die Web Server können je nach Anfrage auf den Cache oder auf die Datenbank zugreifen. Bei der Anfrage /webrequests, werden die Daten aus der Datenbank gelesen und nicht im Cache gespeichert. Alle anderen Anfragen versuchen zunächst die Daten aus dem Cache zu laden und wenn diese dort nicht vorhanden sind, greifen sie auf die Datenbank zu, speichern die Daten in den Cache und geben sie anschließend zurück. Die URLs der Anfragen werden mithilfe von Kafka in ein Topic geschrieben. Die Verarbeitung der Daten erfolgt mithilfe von Spark Structured Streaming. Hierbei werden die Anfragen nach der URL gruppiert und in die Datenbank web_requests gespeichert.
+TODO AF: Bild der gesamten Architektur
 
-Im Batch Layer erfolgt zunächst die Speicherung der CSV-Dateien im Data Lake und anschließend deren Verarbeitung mithilfe von Spark. Dafür wird die vorliegenden CSV-Dateien (aktuellen Spotify-Datensätze) zusammengeführt und anschließend in der Datenbank spotify_cases gespeichert.
+Die Pfeile in der Abbildung zeigen vom Aufrufer zum Empfänger. Der Load Balancer empfängt Web-Anfragen und leitet sie an die Web Server weiter. Die Web Server können je nach Anfrage auf den Cache oder auf die Datenbank zugreifen. Bei der Anfrage /webrequests, werden die Daten aus der Datenbank gelesen und nicht im Cache gespeichert. Alle anderen Anfragen versuchen zunächst die Daten aus dem Cache zu laden und wenn diese dort nicht vorhanden sind, greifen sie auf die Datenbank zu, speichern die Daten in den Cache und geben sie anschließend zurück. Die URLs der Anfragen werden mithilfe von Kafka in ein Topic geschrieben. Die Verarbeitung der Daten erfolgt mithilfe von Spark Structured Streaming. Hierbei werden die Anfragen nach der URL gruppiert und in die Datenbank web_requests gespeichert.
 
-Der Speed Layer bearbeitet nicht nur die Daten die vom Kafka System geliefert werden, sondern simuliert durch das Generieren von Daten die Anzeige von neuen und aktuellen Spotify-Datensätze. Dies wird durch einen TCP Server realisiert, der in kurzen Zeitabständen neue Daten generiert und an die Spark Streaming Komponente sendet. Dabei wird ein Künstler und die Anzahl der Streams (Klickzahlen in einem beliebigen Lied) zufällig gewählt und verarbeitet. Abschließend erfolgt die Speicherung der Daten in der Datenbank live_spotify.
+Im Batch Layer erfolgt zunächst die Speicherung der CSV-Dateien im Data Lake und anschließend deren Verarbeitung mithilfe von Spark (dabei wird die erstellte CSV-Datei zusammengeführt und anschließend in der Datenbank gespeichert).
 
-TODO AF: Abbildung der Architektur
+Der Speed Layer bearbeitet nicht nur die Daten die vom Kafka System geliefert werden, sondern simuliert durch das Generieren von Daten die Anzeige von neuen und aktuellen Spotify-Datensätze. Dies wird durch einen TCP Server realisiert und an die Spark Streaming Komponente sendet. Dabei werden die Künstler und die Anzahl der Streams (Klickzahl des entsprechenden Künsterls über `timesListened`) zufällig gewählt und verarbeitet. Abschließend erfolgt die Speicherung der Daten in der Datenbank.
+
+# Komplikationen beim Umsetzen des Big-Data-Projektes:
+
+### Windows 10 Home (Hyper-V)
+
+### Lauffähigkeit der einzelnen Systeme
+
+### Nicht möglich Daten ins HDFS zu schreiben
+
+### Programmierung ohne
+
+Web-Abfrage auf die Hadoop-Id ist nicht möglich. Daher war es nicht möglich, die Ergebnisse und Funktionalitäten der jeweiligen Verarbeitungs-Skripte nachzuvollziehen. Die entsprechenden Skripte zur Datenverarbeitung und -übertragung mussten daher ohne Überprüfung geschrieben werden. Diese wurden nach Logik und aus Beispielen der Vorlesung auf den eigenen Use Case übertragen.
+
+### Cluster und Container werden erfolgreich hochgefahren und laufen (Status: Running)
+
+### Apache Knox
