@@ -320,12 +320,14 @@ Auch der Status (Screencast_003 in Minute 5:17)
 
 Nach erfolgreichen Aufsetzen der Cluster ist es dennoch nicht möglich gewesen, einen URL-Aufruf unter der Hadoop-IP durchzuführen.
 
-BILD
+![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Hadoop-Cluster.PNG)
 
 Wie aus der Abbildung zu entnehmen ist, sind alle Hadoop-Cluster, Kubernetes-Pods und das gesamte Deployment valid und erreichbar.
 In Screencast_002 ist zu sehen, wie der Aufruf einzelner Hadoop-Cluster via VS-Code-Terminal versucht wird.
 Aus den Directory-Logs über die Web-UI (Aufruf Hadoop-Cluster) ist ersichtlich, warum eine Verbindung bzw. das Hochladen von Dateien nicht gewährleistet werden kann.
 In der Hadoop-Web-UI werden die Nodes der einzelnen Cluster und die Heartbeats angezeigt.
+
+![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Hadoop-WebUI.PNG)
 
 ## Apache Knox
 
