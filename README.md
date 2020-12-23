@@ -341,3 +341,40 @@ Daher wurden zu dem Zeitpunkt diese Diagramm-Repos vermutlich gelöscht und sind
 Da sonstige Probleme oder Bugs nicht mehr behoben werden, kann dies zu den oben genannten Probleme führen.
 Aus dem Vorlesungsmaterial wird eine Alternativlösung nicht ersichtlich.
 Möglich wäre es, ein anderes `helm-chart zu verwendet`, jedoch muss dieses daraufhin mit dem Apache Knox (Link: https://github.com/pfisterer/apache-knox-helm ) kompatibel sein.
+
+# Fazit und Ausblick
+
+Nach der Erarbeitung des Use Cases wurden alle in der Vorlesung und in der Aufgabenstellung beschriebenen Komponenten implementiert.
+Es wurde ermöglicht, die in der Lambda-Architektur beschriebenen Layers aufzusetzen und hochzufahren.
+
+Es war die Aufgabe der implementierten Skripte im Big Data System, die Speicherung in der Datenbank auszuführen.
+Jedoch konnte aufgrund der oben geschilderten Problematik (Dateien in HDFS hochladen) diese Anforderung nicht überprüft und nachvollzogen werden.
+Als entsprechender Folgefehler war das Auswerten der Datensätze über den Web-Server ebenfalls nicht möglich.
+
+Die dazu gehörigen Skripte wurden gleichermaßen implementiert und sollten nach Upload der Dateien funktionsfähig durchlaufen.
+Wenn der Upload innerhalb HDFS möglich wäre (sprich Problem 5.3 und 5.5 behoben), würden der Web-Server die Ergebnisse wie folgt ausgeben:
+
+![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Ausgabe_001.PNG)
+
+Diese Liste der Projektbearbeiter könnte mit EJS (Embedded JavaScript templates) realisiert werden.
+Aktuell ist dieser Stand über eingefügtes HTML via
+
+`app.get("/", function (request, response) { response.send(`Welcome, this is the Big-Data project from
+...`
+
+gelöst. Die darauf folgende Abbildung beschreibt die Suche nach dem Genre “Pop”:
+
+![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Ausgabe_002.PNG)
+
+Die einzelnen Lieder der Pop-Sparte aus der CSV-Datei berücksichtigen den letzten Wert `timesListened` und sortiert die 10 meistgehörten Lieder und gibt den entsprechenden Künstler in der Liste aus.
+Hierbei sind Dopplungen möglich, da der Künstler meist mehrere Lieder in diesem Genre hat.
+
+![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Ausgabe_003.PNG)
+
+Die oben dargestellte Abbildung ist noch nicht realisiert und ist ohne Ausgabe der Ergebnisse so nicht vollständig funktionsfähig realisierbar.
+Die Idee dieses Ergebnisses wäre es, die meist gehörten Lieder auszuwerten und in eine Top-10-Auswertung zu verpacken.
+Hierbei würde allerdings noch berücksichtigt werden, dass Doppelungen der Künstler entfernt werden würden.
+
+Aufgrund der technischen Hindernisse aus Kapitel 5 war diese Realisierung nicht möglich.
+Eine bevorzugte Technologie zur Gestaltung der Ergebnisse wäre React um hier eine einfache und übersichtliche Code-Basis zu schaffen.
+Es wäre auch möglich die tabellarische Darstellung über Styling via SCSS ansprechender darzustellen.
