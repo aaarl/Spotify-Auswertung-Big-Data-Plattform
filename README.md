@@ -103,9 +103,9 @@ $ helm repo add stable https://charts.helm.sh/stable --force-update
 $ helm install --namespace=default --set hdfs.webhdfs.enabled=true my-hadoop-cluster stable/hadoop
 ```
 
-Die "Replicas" werden im Rahmen dieser prototypischen Anwendung jeweils auf drei gesetzt. Im Praxisfall würde die Anzahl dieser Nodes je nach Bedarf nach oben oder unten skaliert werden.
+Die `replicas` dieser Nodes können je nach Bedarf nach oben oder unten skaliert werden.
 
-Um bei der Erst-Erstellung der Docker-Container genügend Vorlaufzeit zur Verfügung zu stellen wurde ein `sleep` eingebaut. Je nach lokaler Umgebung, kann dieser Schritt längere Zeit beanspruchen. Alternativ kann hier auch das Skript `startHDFS_1.sh` genutzt werden. Hier wird eine Schleife erzeugt, die Logs ausgibt bis die Umgebung eingerichtet wurde.
+Um bei der Erst-Erstellung der Docker-Container genügend Vorlaufzeit zur Verfügung zu stellen wurde ein `sleep` eingebaut. Je nach lokaler Umgebung, kann dieser Schritt längere Zeit beanspruchen. Alternativ können hier auf die beiden Skripte `startHDFS_1.sh` und `startHDFS_2.sh` genutzt werden. Diese sind nur von `startHDFS.sh` getrennt um die einzelnen Durchlaufschnitte besser nachvollziehen zu können. Hier wird eine Schleife erzeugt, die Logs ausgibt bis die Umgebung eingerichtet wurde.
 
 ```
 # Helm repository 'pfisterer-knox' hinzufügen
