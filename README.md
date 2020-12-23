@@ -145,21 +145,14 @@ Das Skript kümmert sich um die Ausführung der folgenden Arbeitsschritte:
 3. Durchführung des Spark-Submits für das Batch-Processing zur Verarbeitung der Daten aus dem HDFS-Cluster und die Ablage in die MySQL Datenbank
 4. Starten der Streaming Prozesse im Hintergrund
 
-Beide Streaming Prozesse können auch über den folgenden Befehl gestartet werden:
-
 ```
+# Beide Streaming Prozesse können auch über den folgenden Befehl gestartet werden:
 $ bash startStreaming.sh
-```
 
-Mit dem folgendem Befehl wird das Stream-Processing in Spark aktiviert:
-
-```
+# Mit dem folgendem Befehl wird das Stream-Processing in Spark aktiviert:
 $ bash submitStreaming.sh
-```
 
-Mit dem folgenden Befehl wird das Stream-Processing aus Kafka aktiviert:
-
-```
+# Mit dem folgenden Befehl wird das Stream-Processing aus Kafka aktiviert:
 $ bash submitKafka.sh
 ```
 
