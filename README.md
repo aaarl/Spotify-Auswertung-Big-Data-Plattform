@@ -245,7 +245,7 @@ Im folgenden wird die Lamda-Architektur aus der Vorlesung auf unser Projekt übe
 
 ## Ausgewählte Architektur
 
-![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/Lambda-Architektur.PNG)
+![Lambda-Architektur unseres Projekts](https://github.com/aaarl/Spotify-Auswertung-Big-Data-Plattform/blob/main/documentation/BigData-Architektur.PNG)
 
 Die obige Abbildung beschreibt die gesamte Big-Data Architektur mit den dazugehörigen Partitionen wie der Proprietary Application (Web Application), der Lambda-Architektur welche in Abschnitt 4.2 näher beschrieben wurde, dem Data-Lake zur Batch-Layer und Spark für die Speed-Layer (Berechnung der neuesten Daten/ Echtzeit-Ansicht).
 Die Pfeile in der Abbildung zeigen vom Aufrufer zum Empfänger. Der Load Balancer empfängt Web-Anfragen und leitet diese an die Web-Server weiter.
