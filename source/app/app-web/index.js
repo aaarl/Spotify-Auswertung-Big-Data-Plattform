@@ -37,10 +37,6 @@ async function getMemcachedServers() {
   }
 }
 
-// Initially try to connect to the memcached server and update the list
-getMemcachedServers();
-setInterval(() => getMemcachedServers(), 5000);
-
 // Get data from cache if a cache exists yet
 async function getFromCache(key) {
   if (!memcached) {
@@ -51,6 +47,10 @@ async function getFromCache(key) {
   }
   return await memcached.get(key);
 }
+
+// Initially try to connect to the memcached server and update the list
+getMemcachedServers();
+setInterval(() => getMemcachedServers(), 5000);
 
 // Get the first column data from database for a specific query
 async function getFromDatabaseFirst(query) {
@@ -68,6 +68,19 @@ async function getFromDatabaseFirst(query) {
   }
 }
 
+// Get the top ten artists sorted by timesListened
+async function getArtistsFromDatabase() {
+  let query = `SELECT * from live_spotify ORDER BY timesListened DESC LIMIT 10`;
+  return getFromDatabase(query);
+}
+
+// Get the name from the artist
+async function getNameFromArtist(artist) {
+  let query =
+    'SELECT artist from live_spotify WHERE artist = "' + artist + '" LIMIT 1';
+  return getFromDatabaseFirst(query);
+}
+
 // Get all data from database for a specific query
 async function getFromDatabase(query) {
   let session = await mysqlx.getSession(databaseConfig);
@@ -83,29 +96,16 @@ async function getFromDatabase(query) {
   return all;
 }
 
-// Get the top ten artists sorted by timesListened
-async function getArtistsFromDatabase() {
-  let query = `SELECT * from live_spotify ORDER BY timesListened DESC LIMIT 10`;
-  return getFromDatabase(query);
-}
-
-// Get the name from the artist
-async function getNameFromArtist(artist) {
+async function getTotalArtistsFromDatabase(artist) {
   let query =
-    'SELECT artist from live_spotify WHERE artist = "' + artist + '" LIMIT 1';
-  return getFromDatabaseFirst(query);
-}
-
-async function getTotalArtistsFromDatabase(alpha2) {
-  let query =
-    'SELECT total_cases from spotify_cases WHERE alpha2 = "' +
-    alpha2 +
+    'SELECT total_cases from spotify_cases WHERE artist = "' +
+    artist +
     '" LIMIT 1';
   const batchResult = await getFromDatabaseFirst(query);
 
   let streamingQuery =
     'SELECT sum(count) from live_spotify WHERE artists = "' +
-    alpha2.toUpperCase() +
+    artist.toUpperCase() +
     '" LIMIT 1';
   const streamingResult = await getFromDatabaseFirst(streamingQuery);
 
@@ -120,15 +120,15 @@ async function getTotalArtistsFromDatabase(alpha2) {
 
 // Return all artists where spotify timesListened occurred
 async function getAllArtists() {
-  const query = "SELECT * FROM spotify_cases";
+  const query = "SELECT * FROM live_spotify";
   return getFromDatabase(query);
 }
 
 // Get the artists name for the alpha 2 abbrevation
-async function getArtistName(alpha2) {
+async function getArtistName(artist) {
   return getData(
-    "artists_" + alpha2 + "_name",
-    alpha2,
+    artist,
+    artist,
     getNameFromArtist
   );
 }
@@ -208,8 +208,8 @@ app.get("/", function (request, response) {
 			</ul>
 			The following URL commands are supported:
 			<ul>
-				<li>artists/[id] - id as Artist name</li>
-				<li>artists/[type] - Listing of the top ten most popular artists, the ranking is sorted by the type which could be song times listened or most popular song</li>
+				<li>artists/[genre] - the genre</li>
+				<li>artists/[timesListened] - listing of the top ten most popular artists, the ranking is sorted by the their song times listened or most popular song</li>
                 <li>webrequests - Returns all received requests grouped by the URL</li>
 			</ul>`);
 });
@@ -262,23 +262,11 @@ app.getAsync("/artists/:id", async function (request, response) {
   send_response(response, ret);
 });
 
-// Receive the request for the list of the top ten artists
-app.getAsync("/artists/:type", async function (request, response) {
-  let type = request.params["type"];
+// Set port for web app to listen
+app.set("port", process.env.PORT || 8080);
 
-  sendToKafka(request.url);
-
-  let queryResult = await getArtistsFromDatabase();
-  let queryResultLength = queryResult.length;
-
-  var ret = "<br>Artist | Most popular song | Times Listened | Genre<br>";
-
-  for (var i = 0; i < queryResultLength; ++i) {
-    console.log(i + " : " + queryResult[i]);
-    ret = ret + `${queryResult[i][0]} | ${queryResult[i][1]} | ${queryResult[i][2]} | ${queryResult[i][3]} <br>`;
-  }
-
-  send_response(response, ret);
+app.listen(app.get("port"), function () {
+  console.log("Node app is running at localhost:" + app.get("port"));
 });
 
 // Receive the request for all web-requests so far
@@ -296,9 +284,21 @@ app.getAsync("/webrequests", async function (request, response) {
   send_response(response, ret);
 });
 
-// Set port for web app to listen
-app.set("port", process.env.PORT || 8080);
+// Receive the request for the list of the top ten artists
+app.getAsync("/artists/:type", async function (request, response) {
+  let type = request.params["type"];
 
-app.listen(app.get("port"), function () {
-  console.log("Node app is running at localhost:" + app.get("port"));
+  sendToKafka(request.url);
+
+  let queryResult = await getArtistsFromDatabase();
+  let queryResultLength = queryResult.length;
+
+  var ret = "<br>Artist | Most popular song | Times Listened | Genre<br>";
+
+  for (var i = 0; i < queryResultLength; ++i) {
+    console.log(i + " : " + queryResult[i]);
+    ret = ret + `${queryResult[i][0]} | ${queryResult[i][1]} | ${queryResult[i][2]} | ${queryResult[i][3]} <br>`;
+  }
+
+  send_response(response, ret);
 });
