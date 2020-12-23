@@ -64,16 +64,12 @@ $ minikube addons enable ingress
 $ eval $(minikube docker-env)
 
 # Bauen des Applikationsimages aus dem Dockerfile `source/app/app-web/Dockerfile`
-$ cd web
 $ docker build -t my-super-web-app .
-$ cd ..
 
 # Bauen des Databaseimages aus dem Dockerfile `source/app/database/Dockerfile`
-$ cd db
 $ docker build -t my-super-mysql-database .
-$ cd ..
 
-Ausführen der YAML-Dateien mit Bauanleitung der Infrastruktur
+# Ausführen der YAML-Dateien mit Bauanleitung der Infrastruktur
 $ kubectl apply -f mysql.yml
 $ kubectl apply -f service.yml
 $ kubectl apply -f memcached.yml
