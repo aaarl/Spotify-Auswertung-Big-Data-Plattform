@@ -5,32 +5,12 @@ helm install --namespace=default --set hdfs.dataNode.replicas=1 --set yarn.nodeM
 echo "Waiting some time until everything loaded properly ..."
 
 kubectl get all
-sleep 15
-echo "Still waiting ..."
+sleep 130
 kubectl get all
-sleep 15
-echo "Still waiting ..."
-kubectl get all
-sleep 15
-echo "Still waiting ..."
-kubectl get all
-sleep 15
-echo "Still waiting ..."
-kubectl get all
-sleep 15
-echo "Still waiting ..."
-kubectl get all
-sleep 15
-echo "Still waiting ..."
-kubectl get all
-sleep 15
-echo "Still waiting ..."
-kubectl get all
-sleep 15
+
 echo "-------------------------"
 kubectl get all
 
-# link to repo: https://github.com/pfisterer/apache-knox-helm
 helm repo add pfisterer-knox https://pfisterer.github.io/apache-knox-helm/
 helm install \
   --set "knox.hadoop.nameNodeUrl=hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/"  \
