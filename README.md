@@ -2,14 +2,6 @@
 
 Big-Data-Anwendung zur Auswertung und Analyse der Spotify-Datensätze.
 
-# Links to use:
-
-https://rogerdudler.github.io/git-guide/index.de.html
-
-## Abgabedatum:
-
-Projektabgabe: **23.12.2020**
-
 ## Beschreibung des Projekts
 
 # Einleitung:
@@ -43,8 +35,8 @@ Für das Aufsetzen der Big Data Science Plattform wird eine laufende Kubernetes 
 
 ```
 $ minikube start
-$ # or with explicit no driver (see documentation for further supported driver)
-$ minikube start --driver=none
+$ # or under Windows still give the appropriate parameters so that the minicube contains sufficient resources:
+$ minikube start --cpus 6 --memory 6614
 ```
 
 ## Ausführung
