@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-database-service
+spec:
+  selector:
+    app: my-mysql
+  ports:
+    - name: mysql-prot
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+    - name: mysql-xproto
+      protocol: TCP
+      port: 33060
+      targetPort: 33060

@@ -46,7 +46,7 @@ Alle CMD-Reihen der folgenden Unterkapitel starten jeweils am Kapitelanfang im H
 Eine Anleitung zu einem schrittweisen Aufsetzen des Clusters, der Web Application und Big Data, ist in den folgenden Unterkapiteln erläutert. Alternativ kann die Big Data Science Plattform, unter Berücksichtigung der Voraussetzungen, anhand folgender Anleitung vollständig automatisiert aufgebaut werden:
 
 ```
-$ cd src
+$ cd source
 $ bash start.sh
 $ cd ..
 ```
@@ -56,7 +56,7 @@ $ cd ..
 1. Selektieren des Web Applikation Directorys
 
 ```
-$ cd src/app
+$ cd source/app
 ```
 
 2. Minikube ingress Add-on freischalten
@@ -71,7 +71,7 @@ $ minikube addons enable ingress
 $ eval $(minikube docker-env)
 ```
 
-4. Bauen des Applikationsimages aus dem Dockerfile `src/app/app-web/Dockerfile`
+4. Bauen des Applikationsimages aus dem Dockerfile `source/app/app-web/Dockerfile`
 
 ```
 $ cd web
@@ -79,7 +79,7 @@ $ docker build -t my-super-web-app .
 $ cd ..
 ```
 
-5. Bauen des Databaseimages aus dem Dockerfile `src/app/database/Dockerfile`
+5. Bauen des Databaseimages aus dem Dockerfile `source/app/database/Dockerfile`
 
 ```
 $ cd db
@@ -99,7 +99,7 @@ $ kubectl apply -f deployment.yml
 Alternativ können die einzelnen Schritte über die Ausführung eines Skripts umgesetzt werden:
 
 ```
-$ cd src/app
+$ cd source/app
 $ bash startWeb.sh
 ```
 
@@ -110,7 +110,7 @@ $ bash startWeb.sh
 Der Start von Kafka erfolgt anhand eines bereitgestellten Skripts:
 
 ```
-$ cd src/data/kafka
+$ cd source/data/kafka
 $ bash startKafka.sh
 ```
 
@@ -119,7 +119,7 @@ $ bash startKafka.sh
 1. Selektieren des HDFS-Directorys
 
 ```
-$ cd src/hdfs_data_lake
+$ cd source/hdfs_data_lake
 ```
 
 2. Helm Repository 'stable' hinzufügen und HDFS-Cluster starten
@@ -158,7 +158,7 @@ $ kubectl exec -ti my-hadoop-cluster-hadoop-yarn-rm-0 -- bash -c "hdfs dfs -ls i
 Alternativ können die vorangegangen Setup-Schritte über folgende Kommandozeilenbefehle zusammengefasst werden:
 
 ```
-$ cd src/hdfs_data_lake
+$ cd source/hdfs_data_lake
 $ bash startHDFS.sh
 ```
 
@@ -167,7 +167,7 @@ $ bash startHDFS.sh
 Spark lässt sich mit folgendem Befehl ausführen:
 
 ```
-$ cd src/data
+$ cd source/data
 $ bash startSpark.sh
 ```
 
@@ -201,7 +201,7 @@ $ bash submitKafka.sh
 Die unter `/collection` befindlichen Daten können über die folgenden Kommandozeilenbefehle in das HDFS-Cluster geladen werden:
 
 ```
-$ cd src/data
+$ cd source/data
 $ bash uploadData.sh
 ```
 
@@ -210,7 +210,7 @@ $ bash uploadData.sh
 Der folgende Aufruf, aktualisiert die Datenanalyseskripte und transferiert sie an das HDFS-Cluster:
 
 ```
-$ cd src/data
+$ cd source/data
 $ bash updateScript.sh
 ```
 
@@ -219,7 +219,7 @@ $ bash updateScript.sh
 Der folgende Aufruf submitted alle Skripte an Spark:
 
 ```
-$ cd src/data
+$ cd source/data
 $ bash submit.sh
 $ bash submitStreaming.sh
 $ bash submitKafka.sh
@@ -230,7 +230,7 @@ $ bash submitKafka.sh
 Die Cluster können entweder einzeln oder vollständig heruntergefahren werden. Die folgende Ausführung beschreibt, wie das vollständige herunterfahren der Cluster, über ein Skript, erfolgen kann:
 
 ```
-$ cd src
+$ cd source
 $ bash delete.sh
 $ cd ..
 ```
@@ -240,7 +240,7 @@ Im Folgenden wird beschrieben, wie die einzelnen Cluster einzelnen herunterzufah
 1. Web-Cluster
 
 ```
-$ cd src/app
+$ cd source/app
 $ bash deleteWeb.sh
 $ cd ../..
 ```
@@ -248,7 +248,7 @@ $ cd ../..
 2. Hadoop-Cluster
 
 ```
-$ cd src/hdfs_data_lake
+$ cd source/hdfs_data_lake
 $ bash deleteHDFS.sh
 $ cd ../..
 ```
@@ -256,7 +256,7 @@ $ cd ../..
 3. Kafka-Cluster
 
 ```
-$ cd src/data/kafka
+$ cd source/data/kafka
 $ bash deleteKafka.sh
 $ cd ../../..
 ```
@@ -264,7 +264,7 @@ $ cd ../../..
 4. Spark
 
 ```
-$ cd src/data
+$ cd source/data
 $ bash deleteAllSparkpods.sh
 $ cd ../../..
 ```
@@ -275,14 +275,14 @@ Im folgenden soll die Ordnerstruktur der Anwendung erklärt werden:
 
 - `doc:` gesamte Dokumentation inklusive Aufgabenstellung
 - `collection:` enthält unsere Datensätze (in .csv Format)
-- `src:` Quellcode für das Aufsetzen des Clusters und die Website
-  - `app:` Beinhaltet alle Dateien, die die Web-Applikation und deren Umgebung aufbauen  
+- `source:` Quellcode für das Aufsetzen des Clusters und die Website
+  - `app:` Beinhaltet alle Dateien, die die Web-Applikation und deren Umgebung aufbauen
     - `database:` Scripts für den Insert in die Datenbank
     - `app-web:` Enthät Javascript Datei der Web-Applikation und Dockerfile, das diese Initiiert
   - `data:` Alle Dateien, die zur Installation nätig sind
     - `kafka:` Kafka-Cluster
     - `streaming:` Streaming
-    - `batch:` Beinhaltet Skript für Datenbank-Insert 
+    - `batch:` Beinhaltet Skript für Datenbank-Insert
   - `hdfs_data_lake:` Ansammlung der ganzen Datensätze
 
 ## Ziel-Architektur

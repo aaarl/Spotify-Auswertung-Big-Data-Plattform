@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: my-mysql-deployment
+spec:
+  # A single mysql instance
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-mysql
+  template:
+    metadata:
+      labels:
+        app: my-mysql
+    spec:
+      # The actual mysql database
+      containers:
+        - name: my-mysql
+          image: my-super-mysql-database
+          imagePullPolicy: Never
+          # Set required environment variables to initialize the container
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "mysecretpw"
+            - name: MYSQL_DATABASE
+              value: "spotifydb"
+          ports:
+            - containerPort: 3306
+            - containerPort: 33060
+          readinessProbe:
+            tcpSocket:
+              port: 33060
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 33060
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      #          resources:
+      #            requests:
+      #              cpu: 1
+      #              memory: "200M"
+      #            limits:
+      #              cpu: 1
+      #              memory: "200M"
+      # Define an empty volume to be shared by the init and mysql container
+      volumes:
+        - name: data-volume
+          emptyDir: {}
