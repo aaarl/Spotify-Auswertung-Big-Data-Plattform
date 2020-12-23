@@ -2,8 +2,6 @@ from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode, split
 
-# Create a function to write each batch to the database
-
 
 def foreachBatch(dataframe, _id):
     dataframe.write\
@@ -19,18 +17,17 @@ def foreachBatch(dataframe, _id):
 
 
 if __name__ == "__main__":
-
-    # Due to some issue, we have to instantiate a new SparkConf and SparkContext, even if it is not used directly. The SparkSession is trying to create a new SparkContext and fails if we don't do it before manually.
+    # instantiate a new SparkConf and SparkContext. The SparkSession is trying to create a new SparkContext and fails if we don't do it before manually.
     conf = SparkConf().setAppName("test_import")
     sc = SparkContext("local[*]", "DStream Example")
 
-    # Create new SparkSession in order to read from Kafka
+    # new SparkSession in order to read from Kafka
     spark = SparkSession.builder.config(conf=conf).getOrCreate()
     # Change the log level to WARN, as otherwise Spark is showing the Kafka offset on every request, when no new data is available
     spark.sparkContext.setLogLevel("WARN")
 
-    # Create DataSet representing the stream of input lines from kafka
-    # By using "startingOffsets" = "earliest", we will fetch all available data from the Kafka topic
+    # DataSet representing the stream of input lines from kafka
+    # By using "startingOffsets" = "earliest", we will fetch all available data from Kafka
     lines = spark.readStream \
         .format("kafka") \
         .option("kafka.bootstrap.servers", "my-kafka-cluster-kafka-bootstrap:9092") \
