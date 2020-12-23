@@ -7,12 +7,10 @@ const mysqlx = require("@mysql/xdevapi");
 const MemcachePlus = require("memcache-plus");
 const Kafka = require("node-rdkafka");
 
-//Connect to the memcached instances
 let memcached = null;
 let memcachedServers = [];
 
-// Database configuration according to README
-const dbConfig = {
+const databaseConfig = {
   user: "root",
   password: "mysecretpw",
   host: "my-database-service",
@@ -20,29 +18,28 @@ const dbConfig = {
   schema: "spotifydb",
 };
 
-// Utility function for init Memcache Server objects
-async function getMemcachedServersFromDns() {
+async function getMemcachedServers() {
   try {
     let queryResult = await dns.lookup("my-memcached", { all: true });
-    let servers = queryResult.map((el) => el.address + ":11211");
+    let server = queryResult.map((x) => x.address + ":11211");
 
     // Only create a new object if the server list has changed
-    if (memcachedServers.sort().toString() !== servers.sort().toString()) {
-      console.log("Updated memcached server list to ", servers);
-      memcachedServers = servers;
+    if (memcachedServers.sort().toString() !== server.sort().toString()) {
+      console.log("Updated memcached server list to ", server);
+      memcachedServers = server;
       // Disconnect an existing client
       if (memcached) await memcached.disconnect();
       memcached = new MemcachePlus(memcachedServers);
     }
-  } catch (e) {
-    console.log(`Memcached not found: ${e}`);
+  } catch (exception) {
+    console.log(`Memcached not found: ${exception}`);
     memcached = null;
   }
 }
 
-// Initially try to connect to the memcached servers, then each 5s update the list
-getMemcachedServersFromDns();
-setInterval(() => getMemcachedServersFromDns(), 5000);
+// Initially try to connect to the memcached server and update the list
+getMemcachedServers();
+setInterval(() => getMemcachedServers(), 5000);
 
 // Get data from cache if a cache exists yet
 async function getFromCache(key) {
@@ -57,7 +54,7 @@ async function getFromCache(key) {
 
 // Get the first column data from database for a specific query
 async function getFromDatabaseFirst(query) {
-  let session = await mysqlx.getSession(dbConfig);
+  let session = await mysqlx.getSession(databaseConfig);
 
   console.log("Executing query " + query);
   let res = await session.sql(query).execute();
@@ -73,7 +70,7 @@ async function getFromDatabaseFirst(query) {
 
 // Get all data from database for a specific query
 async function getFromDatabase(query) {
-  let session = await mysqlx.getSession(dbConfig);
+  let session = await mysqlx.getSession(databaseConfig);
 
   console.log("Executing query " + query);
   let res = await session.sql(query).execute();
@@ -86,20 +83,19 @@ async function getFromDatabase(query) {
   return all;
 }
 
-// Get the total cases for a specific artists from the db
-async function getArtistsFromDatabase(type) {
-  let query = `SELECT * from spotify_cases ORDER BY total_${type} DESC LIMIT 10`;
+// Get the top ten artists sorted by timesListened
+async function getArtistsFromDatabase() {
+  let query = `SELECT * from live_spotify ORDER BY timesListened DESC LIMIT 10`;
   return getFromDatabase(query);
 }
 
-// Get the total cases for a specific artists from the db
-async function getArtistNameFromDatabase(alpha2) {
+// Get the name from the artist
+async function getNameFromArtist(artist) {
   let query =
-    'SELECT name from artists WHERE alpha2 = "' + alpha2 + '" LIMIT 1';
+    'SELECT artist from live_spotify WHERE artist = "' + artist + '" LIMIT 1';
   return getFromDatabaseFirst(query);
 }
 
-// Get the total cases for a specific artists from the db
 async function getTotalArtistsFromDatabase(alpha2) {
   let query =
     'SELECT total_cases from spotify_cases WHERE alpha2 = "' +
@@ -122,7 +118,7 @@ async function getTotalArtistsFromDatabase(alpha2) {
   }
 }
 
-// Return all artists where spotify cases occurred
+// Return all artists where spotify timesListened occurred
 async function getAllArtists() {
   const query = "SELECT * FROM spotify_cases";
   return getFromDatabase(query);
@@ -133,7 +129,7 @@ async function getArtistName(alpha2) {
   return getData(
     "artists_" + alpha2 + "_name",
     alpha2,
-    getArtistNameFromDatabase
+    getNameFromArtist
   );
 }
 
@@ -178,13 +174,9 @@ function send_response(response, data) {
 function sendToKafka(message) {
   // Connect to kafka bootstrap as producer
   let kafkaStream = new Kafka.Producer.createWriteStream(
-    {
-      "metadata.broker.list": "my-kafka-cluster-kafka-bootstrap:9092",
-    },
+    { "metadata.broker.list": "my-kafka-cluster-kafka-bootstrap:9092" },
     {},
-    {
-      topic: "web-requests",
-    }
+    { topic: "web-requests" }
   );
 
   // Set error handler for a kafka stream
@@ -230,21 +222,17 @@ app.getAsync("/artists", async function (request, response) {
   console.log(data);
   let result = `<table>
 	<tr>
-	  <th>Artist</th>
+    <th>Artist</th>
+    <th>Most streamed song</th>
 	  <th>Times Listened</th>
-	  <th>Test</th>
-	  <th>Test</th>
-	  <th>Test</th>
-	  <th>Test</th>
+	  <th>Genre</th>
 	</tr>`;
   for (const row of data) {
     result += `<tr>
-		<td>${row[5]}</td>
 		<td>${row[1]}</td>
 		<td>${row[2]}</td>
-		<td>${row[7]}</td>
-		<td>${row[8]}</td>
 		<td>${row[3]}</td>
+		<td>${row[4]}</td>
 	  </tr>`;
   }
   result += `</table>`;
@@ -258,19 +246,18 @@ app.getAsync("/artists/:id", async function (request, response) {
 
   sendToKafka(request.url);
 
-  let cases = await getData(
-    artistsKey + "_cases",
+  let timesListened = await getData(
+    artistsKey + "timesListened",
     artistsId,
     getTotalArtistsFromDatabase
   );
-  console.log(`Got cases=${artistsKey}`);
+  console.log(`Got timesListened=${artistsKey}`);
 
-  let name = await getArtistName(artistsId);
-  console.log(`Got name=${name}`);
+  let artistName = await getArtistName(artistsId);
+  console.log(`Name=${artistName}`);
 
-  let ret = `Numbers for ${name}<ul>
-					<li>Total Cases: ${cases}</li>
-					<li>Total Deaths: ${deaths}</li>
+  let ret = `Numbers for ${artistName}<ul>
+					<li>Total TimesListened: ${timesListened}</li>
 				</ul>`;
   send_response(response, ret);
 });
@@ -281,17 +268,14 @@ app.getAsync("/artists/:type", async function (request, response) {
 
   sendToKafka(request.url);
 
-  let queryResult = await getArtistsFromDatabase(type); // 0 = alpha2, 1 = cases, 2 = deaths
+  let queryResult = await getArtistsFromDatabase();
   let queryResultLength = queryResult.length;
 
-  var ret =
-    "<br>Alpha3 | Total Cases | Test | Test | Test | Test | Test | Test | Test<br>";
+  var ret = "<br>Artist | Most popular song | Times Listened | Genre<br>";
 
   for (var i = 0; i < queryResultLength; ++i) {
     console.log(i + " : " + queryResult[i]);
-    ret =
-      ret +
-      `${queryResult[i][0]} | ${queryResult[i][1]} | ${queryResult[i][2]} | ${queryResult[i][3]} | ${queryResult[i][4]} | ${queryResult[i][5]} | ${queryResult[i][6]} | ${queryResult[i][7]}<br>`;
+    ret = ret + `${queryResult[i][0]} | ${queryResult[i][1]} | ${queryResult[i][2]} | ${queryResult[i][3]} <br>`;
   }
 
   send_response(response, ret);
