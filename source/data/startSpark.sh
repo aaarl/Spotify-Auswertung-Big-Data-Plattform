@@ -37,7 +37,7 @@ echo "Completed Hadoop Setup, starting to load data into the Database"
 bash updateScript.sh
 bash uploadData.sh
 
-bash batch/submit.sh
+bash batch/submitData.sh
 echo "Completed Hadoop Setup, starting to load data into the Database - DONE"
 
 cd streaming && bash startStreaming.sh

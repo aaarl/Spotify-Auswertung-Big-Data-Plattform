@@ -66,7 +66,7 @@ $ sh updateScript.sh
 $ kubectl exec -it my-hadoop-cluster-hadoop-hdfs-nn-0 -- /bin/bash
 hadoop# hdfs dfs -rm -r hdfs://my-hadoop-cluster-hadoop-hdfs-nn:9000/result/result2.csv
 hadoop# exit
-$ Normal shell: sh submit.sh
+$ Normal shell: sh submitData.sh
 ```
 
 # Get result (csv)
