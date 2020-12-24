@@ -98,7 +98,7 @@ async function getFromDatabase(query) {
 
 async function getTotalArtistsFromDatabase(artist) {
   let query =
-    'SELECT total_cases from spotify_cases WHERE artist = "' +
+    'SELECT * from live_spotify WHERE artist = "' +
     artist +
     '" LIMIT 1';
   const batchResult = await getFromDatabaseFirst(query);
